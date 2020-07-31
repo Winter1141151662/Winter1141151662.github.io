@@ -5,18 +5,20 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hexo</title>
+  <link rel="dns-prefetch" href="https://winter1141151662.github.io">
+  <title>emmm cjy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
+  <meta name="description" content="my first blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="emmm cjy">
+<meta property="og:url" content="https://winter1141151662.github.io/index.html">
+<meta property="og:site_name" content="emmm cjy">
+<meta property="og:description" content="my first blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="cjy">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="emmm cjy" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -43,7 +45,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="/assets/img/avatar.jpg" class="js-avatar">
+			<img src="/img/avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/"></a></h1>
@@ -101,7 +103,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="/assets/img/avatar.jpg" class="js-avatar">
+				<img src="/img/avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author"></h1>
@@ -151,6 +153,73 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-对象的浅深克隆" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/31/%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%B5%85%E6%B7%B1%E5%85%8B%E9%9A%86/">对象的浅深克隆</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/31/%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%B5%85%E6%B7%B1%E5%85%8B%E9%9A%86/" class="archive-article-date">
+  	<time datetime="2020-07-31T15:03:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>学习js的时候都知道js数据类型有<strong>两种</strong>：<br><strong>常见基础数据类型</strong>：Number、String 、Boolean、Null和Undefined，基本数据类型是按值访问，因此可以直接操作在保存在变量的值。</p>
+<p><strong>引用类型数据：</strong> Object 、Array 、Function 、Data等，js引用类型是保存在堆内存的引用地址，例如<br>var a = {<br>    name:”chen”,<br>    age:18<br>}</p>
+<p>也就是说a中实际存储的是对象的地址。<br>假设我们有个变量b等于a，如果我们给a修改一个值，那么打印b，对象也随之更改，但是我们有时候更希望b与a之间相互独立，对象之间的内容相等，但是改变a中对象的值时，b不会改变，这时候我们就需要引出今天的深度克隆</p>
+<h3 id="那什么是浅深克隆？"><a href="#那什么是浅深克隆？" class="headerlink" title="那什么是浅深克隆？"></a>那什么是浅深克隆？</h3><p><strong>浅拷贝:</strong> 对拷贝后的数据进行修改会影响原数据的一种拷贝方式。<br><strong>深拷贝(深度克隆):</strong> 对拷贝后的数据进行修改不会影响原数据的一种拷贝方式。</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p><img src="E:\blog\themes\yilia\source\img\clone\1596209081(1).jpg" alt="1596209081(1)"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/31/%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%B5%85%E6%B7%B1%E5%85%8B%E9%9A%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-jsx" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -253,7 +322,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2020 John Doe
+    		&copy; 2020 cjy
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
