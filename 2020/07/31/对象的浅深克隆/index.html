@@ -8,16 +8,17 @@
   <link rel="dns-prefetch" href="https://winter1141151662.github.io">
   <title>对象的浅深克隆 | emmm cjy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="引言学习js的时候都知道js数据类型有两种：常见基础数据类型：Number、String 、Boolean、Null和Undefined，基本数据类型是按值访问，因此可以直接操作在保存在变量的值。 引用类型数据： Object 、Array 、Function 、Data等，js引用类型是保存在堆内存的引用地址，例如var a &#x3D; {    name:”chen”,    age:18} 也就是说">
+  <meta name="description" content="引言学习js的时候都知道js数据类型有两种：常见基础数据类型：Number、String 、Boolean、Null和Undefined，基本数据类型是按值访问，因此可以直接操作在保存在变量的值。 引用类型数据： Object 、Array 、Function 、Data等，js引用类型是保存在堆内存的引用地址，例如var a &#x3D; {    name:”chen”,    age:18}">
 <meta property="og:type" content="article">
 <meta property="og:title" content="对象的浅深克隆">
 <meta property="og:url" content="https://winter1141151662.github.io/2020/07/31/%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%B5%85%E6%B7%B1%E5%85%8B%E9%9A%86/index.html">
 <meta property="og:site_name" content="emmm cjy">
-<meta property="og:description" content="引言学习js的时候都知道js数据类型有两种：常见基础数据类型：Number、String 、Boolean、Null和Undefined，基本数据类型是按值访问，因此可以直接操作在保存在变量的值。 引用类型数据： Object 、Array 、Function 、Data等，js引用类型是保存在堆内存的引用地址，例如var a &#x3D; {    name:”chen”,    age:18} 也就是说">
+<meta property="og:description" content="引言学习js的时候都知道js数据类型有两种：常见基础数据类型：Number、String 、Boolean、Null和Undefined，基本数据类型是按值访问，因此可以直接操作在保存在变量的值。 引用类型数据： Object 、Array 、Function 、Data等，js引用类型是保存在堆内存的引用地址，例如var a &#x3D; {    name:”chen”,    age:18}">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-07-31T15:03:12.000Z">
-<meta property="article:modified_time" content="2020-07-31T15:34:24.453Z">
+<meta property="article:modified_time" content="2020-07-31T16:06:30.450Z">
 <meta property="article:author" content="cjy">
+<meta property="article:tag" content="js基础">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="emmm cjy" type="application/atom+xml">
@@ -57,7 +58,7 @@
 		<nav class="header-menu">
 			<ul>
 			
-				<li><a href="/BUBU/">主页</a></li>
+				<li><a target="_blank" rel="noopener" href="https://github.com/Winter1141151662">主页</a></li>
 	        
 				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 	        
@@ -137,7 +138,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/BUBU/">主页</a></li>
+					<li style="width: 50%"><a target="_blank" rel="noopener" href="https://github.com/Winter1141151662">主页</a></li>
 		        
 					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 		        
@@ -176,10 +177,11 @@
       
         <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>学习js的时候都知道js数据类型有<strong>两种</strong>：<br><strong>常见基础数据类型</strong>：Number、String 、Boolean、Null和Undefined，基本数据类型是按值访问，因此可以直接操作在保存在变量的值。</p>
 <p><strong>引用类型数据：</strong> Object 、Array 、Function 、Data等，js引用类型是保存在堆内存的引用地址，例如<br>var a = {<br>    name:”chen”,<br>    age:18<br>}</p>
+<a id="more"></a>
 <p>也就是说a中实际存储的是对象的地址。<br>假设我们有个变量b等于a，如果我们给a修改一个值，那么打印b，对象也随之更改，但是我们有时候更希望b与a之间相互独立，对象之间的内容相等，但是改变a中对象的值时，b不会改变，这时候我们就需要引出今天的深度克隆</p>
 <h3 id="那什么是浅深克隆？"><a href="#那什么是浅深克隆？" class="headerlink" title="那什么是浅深克隆？"></a>那什么是浅深克隆？</h3><p><strong>浅拷贝:</strong> 对拷贝后的数据进行修改会影响原数据的一种拷贝方式。<br><strong>深拷贝(深度克隆):</strong> 对拷贝后的数据进行修改不会影响原数据的一种拷贝方式。</p>
 <h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>只考虑array object和其他基础数据类型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * 对象的浅克隆和深度克隆</span><br><span class="line"> * @param &#123;Object&#125; obj 对象</span><br><span class="line"> * @param &#123;*&#125; deep 是否深度克隆 有该参数则深度克隆</span><br><span class="line"> *&#x2F;</span><br><span class="line">function clone(obj, deep) &#123;</span><br><span class="line">    &#x2F;&#x2F;判断对象是否为数组</span><br><span class="line">    if (Array.isArray(obj)) &#123;</span><br><span class="line">        &#x2F;&#x2F; 是否深克隆</span><br><span class="line">        if (deep) &#123;</span><br><span class="line">            &#x2F;&#x2F;创建新数组</span><br><span class="line">            let newArr &#x3D; [];</span><br><span class="line">            for (const item of obj) &#123;</span><br><span class="line">                newArr.push(clone(item, deep)); &#x2F;&#x2F;将每一项重新回调</span><br><span class="line">            &#125;</span><br><span class="line">            return newArr</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return obj.slice() &#x2F;&#x2F;复制数组</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else if (typeof obj &#x3D;&#x3D;&#x3D; &quot;object&quot;) &#123; &#x2F;&#x2F;是否为object</span><br><span class="line">        &#x2F;&#x2F; 创建一个对象</span><br><span class="line">        let newObj &#x3D; &#123;&#125;;</span><br><span class="line">        for (const prop in obj) &#123;</span><br><span class="line">            if (deep) &#123;</span><br><span class="line">                newObj[prop] &#x3D; clone(prop, deep);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                newObj[prop] &#x3D; obj[prop]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return newObj</span><br><span class="line">    &#125; else &#123; &#x2F;&#x2F;函数 原始类型</span><br><span class="line">        return obj; &#x2F;&#x2F;递归的终止条件</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * 对象的浅克隆和深度克隆</span><br><span class="line"> * @param &#123;Object&#125; obj 对象</span><br><span class="line"> * @param &#123;*&#125; deep 是否深度克隆 有该参数则深度克隆</span><br><span class="line"> *&#x2F;</span><br><span class="line">function clone(obj, deep) &#123;</span><br><span class="line">    &#x2F;&#x2F;判断对象是否为数组</span><br><span class="line">    if (Array.isArray(obj)) &#123;</span><br><span class="line">        &#x2F;&#x2F; 是否深克隆</span><br><span class="line">        if (deep) &#123;</span><br><span class="line">            &#x2F;&#x2F;创建新数组</span><br><span class="line">            let newArr &#x3D; [];</span><br><span class="line">            for (const item of obj) &#123;</span><br><span class="line">                newArr.push(clone(item, deep)); &#x2F;&#x2F;将每一项重新回调</span><br><span class="line">            &#125;</span><br><span class="line">            return newArr</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return obj.slice() &#x2F;&#x2F;复制数组</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else if (typeof obj &#x3D;&#x3D;&#x3D; &quot;object&quot;) &#123; &#x2F;&#x2F;是否为object</span><br><span class="line">        &#x2F;&#x2F; 创建一个对象</span><br><span class="line">        let newObj &#x3D; &#123;&#125;;</span><br><span class="line">        for (const prop in obj) &#123;</span><br><span class="line">            if (deep) &#123;</span><br><span class="line">                newObj[prop] &#x3D; clone(obj[prop], deep);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                newObj[prop] &#x3D; obj[prop]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return newObj</span><br><span class="line">    &#125; else &#123; &#x2F;&#x2F;函数 原始类型</span><br><span class="line">        return obj; &#x2F;&#x2F;递归的终止条件</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -187,6 +189,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -250,6 +263,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/08/01/%E6%9F%AF%E7%90%86%E5%8C%96%E5%87%BD%E6%95%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          柯理化函数
+        
+      </div>
+    </a>
   
   
     <a href="/2020/07/31/jsx/" id="article-nav-older" class="article-nav-link-wrap">
@@ -390,6 +412,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">js基础</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
