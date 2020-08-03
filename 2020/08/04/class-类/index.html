@@ -6,21 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://winter1141151662.github.io">
-  <title>函数防抖与节流 | emmm cjy</title>
+  <title>emmm cjy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="函数防抖函数防抖：在规定的n时间内只执行一次函数，如果在n秒内重新操作，则会重置该时间。 函数防抖代码实现123456789101112131415161718&#x2F;** * 实现函数防抖 * @param &amp;#123;*&amp;#125; callback 传入回调函数 * @param &amp;#123;*&amp;#125; time 规定时间 *&#x2F;function debounce(callback, time)">
+  <meta name="description" content="传统的构造函数的问题 属性和原型方法定义分离，降低了可读性 原型成员可以被枚举 默认情况下，构造函数仍然可以被当作普通函数使用  类的特点 类声明不会被提升，与 let 和 const 一样，存在暂时性死区 类中的所有代码均在严格模式下执行 类的所有方法都是不可枚举的 类的所有方法都无法被当作构造函数使用 类的构造器必须使用 new 来调用  类的其他书写方式 可计算的成员名  getter和se">
 <meta property="og:type" content="article">
-<meta property="og:title" content="函数防抖与节流">
-<meta property="og:url" content="https://winter1141151662.github.io/2020/08/01/%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81/index.html">
+<meta property="og:title" content="emmm cjy">
+<meta property="og:url" content="https://winter1141151662.github.io/2020/08/04/class-%E7%B1%BB/index.html">
 <meta property="og:site_name" content="emmm cjy">
-<meta property="og:description" content="函数防抖函数防抖：在规定的n时间内只执行一次函数，如果在n秒内重新操作，则会重置该时间。 函数防抖代码实现123456789101112131415161718&#x2F;** * 实现函数防抖 * @param &amp;#123;*&amp;#125; callback 传入回调函数 * @param &amp;#123;*&amp;#125; time 规定时间 *&#x2F;function debounce(callback, time)">
+<meta property="og:description" content="传统的构造函数的问题 属性和原型方法定义分离，降低了可读性 原型成员可以被枚举 默认情况下，构造函数仍然可以被当作普通函数使用  类的特点 类声明不会被提升，与 let 和 const 一样，存在暂时性死区 类中的所有代码均在严格模式下执行 类的所有方法都是不可枚举的 类的所有方法都无法被当作构造函数使用 类的构造器必须使用 new 来调用  类的其他书写方式 可计算的成员名  getter和se">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-08-01T14:46:11.000Z">
-<meta property="article:modified_time" content="2020-08-03T17:39:50.158Z">
+<meta property="article:published_time" content="2020-08-03T17:44:24.010Z">
+<meta property="article:modified_time" content="2020-08-03T18:16:14.172Z">
 <meta property="article:author" content="cjy">
-<meta property="article:tag" content="js基础">
-<meta property="article:tag" content="闭包">
-<meta property="article:tag" content="函数默认值">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="emmm cjy" type="application/atom+xml">
@@ -157,40 +154,79 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-函数防抖与节流" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-class-类" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      函数防抖与节流
-    </h1>
-  
-
-        
-        <a href="/2020/08/01/%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81/" class="archive-article-date">
-  	<time datetime="2020-08-01T14:46:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-01</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="函数防抖"><a href="#函数防抖" class="headerlink" title="函数防抖"></a>函数防抖</h3><p>函数防抖：在规定的n时间内只执行一次函数，如果在n秒内重新操作，则会重置该时间。</p>
-<h4 id="函数防抖代码实现"><a href="#函数防抖代码实现" class="headerlink" title="函数防抖代码实现"></a>函数防抖代码实现</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 实现函数防抖</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>callback 传入回调函数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>time 规定时间</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">callback, time</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> timer;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 每次调用都需要清除定时器</span></span><br><span class="line">        <span class="built_in">clearTimeout</span>(timer);</span><br><span class="line">        <span class="comment">// 保存arguments</span></span><br><span class="line">        <span class="keyword">let</span> args = <span class="built_in">arguments</span>;</span><br><span class="line">        timer = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">// time事件之后调用回调函数</span></span><br><span class="line">            callback.apply(<span class="literal">null</span>, args)</span><br><span class="line">        &#125;, time)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<blockquote>
-<p>老方法使用闭包获取timer，每次调用清除定时器，等到规定时间之后调用该回调函数。</p>
-</blockquote>
-<h3 id="函数节流"><a href="#函数节流" class="headerlink" title="函数节流"></a>函数节流</h3><p>函数节流：保证一个时间段内执行一次</p>
-<h4 id="函数节流代码实现"><a href="#函数节流代码实现" class="headerlink" title="函数节流代码实现"></a>函数节流代码实现</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function throttle(callback, time) &#123;</span><br><span class="line">    let timer;</span><br><span class="line">    return function() &#123;</span><br><span class="line">        &#x2F;&#x2F;变化的就是这里需要判断之前的timer是否有值了</span><br><span class="line">        if (timer) &#123;</span><br><span class="line">            return</span><br><span class="line">        &#125;</span><br><span class="line">        let args &#x3D; arguments;</span><br><span class="line">        timer &#x3D; setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">            callback.apply(null, args);</span><br><span class="line">            time &#x3D; null; &#x2F;&#x2F;需要清空定时器！！</span><br><span class="line">        &#125;，time)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>但是有时候我们希望函数节流能够<strong>立即执行</strong>，那么就可以将这个节流封装函数在优化一下，代码如下：</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * 函数节流具有立即执行的功能的封装</span><br><span class="line"> * @param &#123;*&#125; callback 回调函数</span><br><span class="line"> * @param &#123;*&#125; time 规定的时间</span><br><span class="line"> * @param &#123;Boolean&#125; immediately 是否立即执行，默认值为true</span><br><span class="line"> *&#x2F;</span><br><span class="line">function throttle(callback, time, immediately &#x3D; true) &#123;</span><br><span class="line">    &#x2F;&#x2F;判断是否立即执行</span><br><span class="line">    if (immediately) &#123;</span><br><span class="line">        let t;</span><br><span class="line">        return function() &#123;</span><br><span class="line">            if(immediately)&#123;</span><br><span class="line">                if (!t || Date.now() - t &gt;&#x3D; time) &#123; &#x2F;&#x2F;只有t不存在或者两者时间戳相差时间大于等于time才执行</span><br><span class="line">                    callback.apply(null, arguments);</span><br><span class="line">                    t &#x3D; Date.now()</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        let timer;</span><br><span class="line">        return function() &#123;</span><br><span class="line">            if (timer) &#123;</span><br><span class="line">                return</span><br><span class="line">            &#125;</span><br><span class="line">            let args &#x3D; arguments;</span><br><span class="line">            timer &#x3D; setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">                callback.apply(null, args);</span><br><span class="line">                timer &#x3D; null; &#x2F;&#x2F;这一步千万不能少</span><br><span class="line">            &#125;, time);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h3 id="传统的构造函数的问题"><a href="#传统的构造函数的问题" class="headerlink" title="传统的构造函数的问题"></a>传统的构造函数的问题</h3><ol>
+<li>属性和原型方法定义分离，降低了可读性</li>
+<li>原型成员可以被枚举</li>
+<li>默认情况下，构造函数仍然可以被当作普通函数使用</li>
+</ol>
+<h3 id="类的特点"><a href="#类的特点" class="headerlink" title="类的特点"></a>类的特点</h3><ol>
+<li>类声明不会被提升，与 let 和 const 一样，存在暂时性死区</li>
+<li>类中的所有代码均在严格模式下执行</li>
+<li>类的所有方法都是不可枚举的</li>
+<li>类的所有方法都无法被当作构造函数使用</li>
+<li>类的构造器必须使用 new 来调用</li>
+</ol>
+<h3 id="类的其他书写方式"><a href="#类的其他书写方式" class="headerlink" title="类的其他书写方式"></a>类的其他书写方式</h3><ol>
+<li><p>可计算的成员名</p>
+</li>
+<li><p>getter和setter</p>
+</li>
+</ol>
+<p>Object.defineProperty 可定义某个对象成员属性的读取和设置</p>
+<p>使用getter和setter控制的属性，不在原型上</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cjy</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(b)&#123;</span><br><span class="line">        <span class="built_in">this</span>.b = b;</span><br><span class="line">        <span class="built_in">this</span>.c = <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">get</span> <span class="title">b</span>()&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">set</span> <span class="title">b</span>(<span class="params">newVal</span>)&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>函数防抖和函数节流的区别：<br>函数防抖：在一段时间内无论中途触发多少次都要等到<strong>动作结束之后</strong>才运行。<br>函数节流：无论触发多频繁<strong>每隔一段时间</strong>内执行。</p>
+
+
+
+<ol start="3">
+<li>静态成员</li>
+</ol>
+<p>构造函数本身的成员</p>
+<p>使用static关键字定义的成员即静态成员</p>
+<ol start="4">
+<li>字段初始化器（ES7）<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cjy</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> a = <span class="number">1</span>;</span><br><span class="line">    b = <span class="number">2</span>;</span><br><span class="line">    c = <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//相当于</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cjy</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> a = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">constructor</span>()&#123;</span><br><span class="line">        <span class="built_in">this</span>.b = <span class="number">2</span>;</span><br><span class="line">        <span class="built_in">this</span>.c = <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+其中a可以通过Cjy.a访问到</li>
+</ol>
+<p>注意：</p>
+<p>1). 使用static的字段初始化器，添加的是静态成员<br>2). 没有使用static的字段初始化器，添加的成员位于对象上<br>3). 箭头函数在字段初始化器位置上，指向当前对象</p>
+<ol start="5">
+<li>类表达式<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Cjy = <span class="class"><span class="keyword">class</span> </span>&#123;<span class="comment">//匿名表达式</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h3></li>
+</ol>
+<p>如果两个类A和B，如果可以描述为：B 是 A，则，A和B形成继承关系</p>
+<p>如果B是A，则：</p>
+<ol>
+<li>B继承自A</li>
+<li>A派生B</li>
+<li>B是A的子类</li>
+<li>A是B的父类</li>
+</ol>
+<p>如果A是B的父类，则B会自动拥有A中的所有实例成员。</p>
+<p>新的关键字：</p>
+<ul>
+<li>extends：继承，用于类的定义</li>
+<li>super<ul>
+<li>直接当作函数调用，表示父类构造函数</li>
+<li>如果当作对象使用，则表示父类的原型</li>
+</ul>
+</li>
+</ul>
+<p>注意：ES6要求，如果定义了constructor，并且该类是子类，则必须在constructor的<strong>第一行</strong>手动调用父类的构造函数</p>
+<p>如果子类不写constructor，则会有默认的构造器，该构造器需要的参数和父类一致，并且自动调用父类构造器</p>
+<p>【冷知识】</p>
+<ul>
+<li>用JS制作抽象类<ul>
+<li>抽象类：一般是父类，不能通过该类创建对象</li>
+</ul>
+</li>
+<li>正常情况下，this的指向，this始终指向具体的类的对象</li>
+</ul>
 
       
 
@@ -199,25 +235,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">闭包</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">函数默认值</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -268,7 +285,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://winter1141151662.github.io/2020/08/01/%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://winter1141151662.github.io/2020/08/04/class-%E7%B1%BB/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -282,18 +299,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/08/01/%E5%9C%A3%E6%9D%AF%E6%A8%A1%E5%BC%8F/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          圣杯模式
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/08/01/%E5%87%BD%E6%95%B0%E7%AE%A1%E9%81%93/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">函数管道</div>
+    <a href="/2020/08/04/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">箭头函数</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -320,7 +328,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96"><span class="toc-number">1.</span> <span class="toc-text">函数防抖</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.1.</span> <span class="toc-text">函数防抖代码实现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E8%8A%82%E6%B5%81"><span class="toc-number">2.</span> <span class="toc-text">函数节流</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E8%8A%82%E6%B5%81%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.1.</span> <span class="toc-text">函数节流代码实现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%A0%E7%BB%9F%E7%9A%84%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">传统的构造函数的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">2.</span> <span class="toc-text">类的特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E5%85%B6%E4%BB%96%E4%B9%A6%E5%86%99%E6%96%B9%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">类的其他书写方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E7%BB%A7%E6%89%BF"><span class="toc-number">4.</span> <span class="toc-text">类的继承</span></a></li></ol>
                     </div>
                 </span>
             </div>

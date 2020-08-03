@@ -154,6 +154,209 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-class-类" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="传统的构造函数的问题"><a href="#传统的构造函数的问题" class="headerlink" title="传统的构造函数的问题"></a>传统的构造函数的问题</h3><ol>
+<li>属性和原型方法定义分离，降低了可读性</li>
+<li>原型成员可以被枚举</li>
+<li>默认情况下，构造函数仍然可以被当作普通函数使用</li>
+</ol>
+<h3 id="类的特点"><a href="#类的特点" class="headerlink" title="类的特点"></a>类的特点</h3><ol>
+<li>类声明不会被提升，与 let 和 const 一样，存在暂时性死区</li>
+<li>类中的所有代码均在严格模式下执行</li>
+<li>类的所有方法都是不可枚举的</li>
+<li>类的所有方法都无法被当作构造函数使用</li>
+<li>类的构造器必须使用 new 来调用</li>
+</ol>
+<h3 id="类的其他书写方式"><a href="#类的其他书写方式" class="headerlink" title="类的其他书写方式"></a>类的其他书写方式</h3><ol>
+<li><p>可计算的成员名</p>
+</li>
+<li><p>getter和setter</p>
+</li>
+</ol>
+<p>Object.defineProperty 可定义某个对象成员属性的读取和设置</p>
+<p>使用getter和setter控制的属性，不在原型上</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cjy</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(b)&#123;</span><br><span class="line">        <span class="built_in">this</span>.b = b;</span><br><span class="line">        <span class="built_in">this</span>.c = <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">get</span> <span class="title">b</span>()&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">set</span> <span class="title">b</span>(<span class="params">newVal</span>)&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+<ol start="3">
+<li>静态成员</li>
+</ol>
+<p>构造函数本身的成员</p>
+<p>使用static关键字定义的成员即静态成员</p>
+<ol start="4">
+<li>字段初始化器（ES7）<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cjy</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> a = <span class="number">1</span>;</span><br><span class="line">    b = <span class="number">2</span>;</span><br><span class="line">    c = <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//相当于</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cjy</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> a = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">constructor</span>()&#123;</span><br><span class="line">        <span class="built_in">this</span>.b = <span class="number">2</span>;</span><br><span class="line">        <span class="built_in">this</span>.c = <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+其中a可以通过Cjy.a访问到</li>
+</ol>
+<p>注意：</p>
+<p>1). 使用static的字段初始化器，添加的是静态成员<br>2). 没有使用static的字段初始化器，添加的成员位于对象上<br>3). 箭头函数在字段初始化器位置上，指向当前对象</p>
+<ol start="5">
+<li>类表达式<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Cjy = <span class="class"><span class="keyword">class</span> </span>&#123;<span class="comment">//匿名表达式</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h3></li>
+</ol>
+<p>如果两个类A和B，如果可以描述为：B 是 A，则，A和B形成继承关系</p>
+<p>如果B是A，则：</p>
+<ol>
+<li>B继承自A</li>
+<li>A派生B</li>
+<li>B是A的子类</li>
+<li>A是B的父类</li>
+</ol>
+<p>如果A是B的父类，则B会自动拥有A中的所有实例成员。</p>
+<p>新的关键字：</p>
+<ul>
+<li>extends：继承，用于类的定义</li>
+<li>super<ul>
+<li>直接当作函数调用，表示父类构造函数</li>
+<li>如果当作对象使用，则表示父类的原型</li>
+</ul>
+</li>
+</ul>
+<p>注意：ES6要求，如果定义了constructor，并且该类是子类，则必须在constructor的<strong>第一行</strong>手动调用父类的构造函数</p>
+<p>如果子类不写constructor，则会有默认的构造器，该构造器需要的参数和父类一致，并且自动调用父类构造器</p>
+<p>【冷知识】</p>
+<ul>
+<li>用JS制作抽象类<ul>
+<li>抽象类：一般是父类，不能通过该类创建对象</li>
+</ul>
+</li>
+<li>正常情况下，this的指向，this始终指向具体的类的对象</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/04/class-%E7%B1%BB/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-箭头函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/04/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/">箭头函数</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/04/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/" class="archive-article-date">
+  	<time datetime="2020-08-03T17:37:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><p>回顾：this指向</p>
+<ol>
+<li>通过对象调用函数，this指向对象</li>
+<li>直接调用函数，this指向全局对象</li>
+<li>如果通过new调用函数，this指向新创建的对象</li>
+<li>如果通过apply、call、bind调用函数，this指向指定的数据</li>
+<li>如果是DOM事件函数，this指向事件源</li>
+</ol>
+<h2 id="使用语法"><a href="#使用语法" class="headerlink" title="使用语法"></a>使用语法</h2>
+        
+          <a class="article-more-a" href="/2020/08/04/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">es6</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">箭头函数</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/04/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-apply-call-bind的用法和区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -584,7 +787,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="函数防抖"><a href="#函数防抖" class="headerlink" title="函数防抖"></a>函数防抖</h3><p>函数防抖：在规定的n时间内只执行一次函数，如果在n秒内重新操作，则会重置该时间。</p>
-<h4 id="函数防抖代码实现"><a href="#函数防抖代码实现" class="headerlink" title="函数防抖代码实现"></a>函数防抖代码实现</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * 实现函数防抖</span><br><span class="line"> * @param &#123;*&#125; callback 传入回调函数</span><br><span class="line"> * @param &#123;*&#125; time 规定时间</span><br><span class="line"> *&#x2F;</span><br><span class="line">function debounce(callback, time) &#123;</span><br><span class="line">    let timer;</span><br><span class="line">    return function() &#123;</span><br><span class="line">        &#x2F;&#x2F; 每次调用都需要清除定时器</span><br><span class="line">        clearTimeout(timer);</span><br><span class="line">        &#x2F;&#x2F; 保存arguments</span><br><span class="line">        let args &#x3D; arguments;</span><br><span class="line">        timer &#x3D; setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">            &#x2F;&#x2F; time事件之后调用回调函数</span><br><span class="line">            callback.apply(null, args)</span><br><span class="line">        &#125;, time)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="函数防抖代码实现"><a href="#函数防抖代码实现" class="headerlink" title="函数防抖代码实现"></a>函数防抖代码实现</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 实现函数防抖</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>callback 传入回调函数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>time 规定时间</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">callback, time</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> timer;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 每次调用都需要清除定时器</span></span><br><span class="line">        <span class="built_in">clearTimeout</span>(timer);</span><br><span class="line">        <span class="comment">// 保存arguments</span></span><br><span class="line">        <span class="keyword">let</span> args = <span class="built_in">arguments</span>;</span><br><span class="line">        timer = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">// time事件之后调用回调函数</span></span><br><span class="line">            callback.apply(<span class="literal">null</span>, args)</span><br><span class="line">        &#125;, time)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         
           <a class="article-more-a" href="/2020/08/01/%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81/#more">more >></a>
         
@@ -820,175 +1023,10 @@
 
 
   
-    <article id="post-对象的浅深克隆" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/31/%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%B5%85%E6%B7%B1%E5%85%8B%E9%9A%86/">对象的浅深克隆</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/31/%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%B5%85%E6%B7%B1%E5%85%8B%E9%9A%86/" class="archive-article-date">
-  	<time datetime="2020-07-31T15:03:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>学习js的时候都知道js数据类型有<strong>两种</strong>：<br><strong>常见基础数据类型</strong>：Number、String 、Boolean、Null和Undefined，基本数据类型是按值访问，因此可以直接操作在保存在变量的值。</p>
-<p><strong>引用类型数据：</strong> Object 、Array 、Function 、Data等，js引用类型是保存在堆内存的引用地址，例如<br>var a = {<br>    name:”chen”,<br>    age:18<br>}</p>
-        
-          <a class="article-more-a" href="/2020/07/31/%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%B5%85%E6%B7%B1%E5%85%8B%E9%9A%86/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/31/%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%B5%85%E6%B7%B1%E5%85%8B%E9%9A%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-jsx" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/31/jsx/">jsx</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/31/jsx/" class="archive-article-date">
-  	<time datetime="2020-07-31T05:44:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="什么是JSX"><a href="#什么是JSX" class="headerlink" title="什么是JSX"></a>什么是JSX</h2><ul>
-<li>Facebook起草的JS扩展语法</li>
-<li>本质是一个JS对象，会被babel编译，最终会被转换为React.createElement</li>
-<li>每个JSX表达式，有且仅有一个根节点<ul>
-<li>React.Fragment</li>
-</ul>
-</li>
-<li>每个JSX元素必须结束（XML规范）</li>
-</ul>
-<h2 id="在JSX中嵌入表达式"><a href="#在JSX中嵌入表达式" class="headerlink" title="在JSX中嵌入表达式"></a>在JSX中嵌入表达式</h2><ul>
-<li>在JSX中使用注释</li>
-<li>将表达式作为内容的一部分</li>
-<li>
-        
-          <a class="article-more-a" href="/2020/07/31/jsx/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JSX语法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/31/jsx/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    </nav>
   
 
 
@@ -1123,6 +1161,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">构造函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">箭头函数</a>
               </li>
             
             <div class="clearfix"></div>

@@ -6,21 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://winter1141151662.github.io">
-  <title>函数防抖与节流 | emmm cjy</title>
+  <title>箭头函数 | emmm cjy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="函数防抖函数防抖：在规定的n时间内只执行一次函数，如果在n秒内重新操作，则会重置该时间。 函数防抖代码实现123456789101112131415161718&#x2F;** * 实现函数防抖 * @param &amp;#123;*&amp;#125; callback 传入回调函数 * @param &amp;#123;*&amp;#125; time 规定时间 *&#x2F;function debounce(callback, time)">
+  <meta name="description" content="箭头函数回顾：this指向  通过对象调用函数，this指向对象 直接调用函数，this指向全局对象 如果通过new调用函数，this指向新创建的对象 如果通过apply、call、bind调用函数，this指向指定的数据 如果是DOM事件函数，this指向事件源  使用语法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="函数防抖与节流">
-<meta property="og:url" content="https://winter1141151662.github.io/2020/08/01/%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81/index.html">
+<meta property="og:title" content="箭头函数">
+<meta property="og:url" content="https://winter1141151662.github.io/2020/08/04/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/index.html">
 <meta property="og:site_name" content="emmm cjy">
-<meta property="og:description" content="函数防抖函数防抖：在规定的n时间内只执行一次函数，如果在n秒内重新操作，则会重置该时间。 函数防抖代码实现123456789101112131415161718&#x2F;** * 实现函数防抖 * @param &amp;#123;*&amp;#125; callback 传入回调函数 * @param &amp;#123;*&amp;#125; time 规定时间 *&#x2F;function debounce(callback, time)">
+<meta property="og:description" content="箭头函数回顾：this指向  通过对象调用函数，this指向对象 直接调用函数，this指向全局对象 如果通过new调用函数，this指向新创建的对象 如果通过apply、call、bind调用函数，this指向指定的数据 如果是DOM事件函数，this指向事件源  使用语法">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-08-01T14:46:11.000Z">
-<meta property="article:modified_time" content="2020-08-03T17:39:50.158Z">
+<meta property="article:published_time" content="2020-08-03T17:37:13.000Z">
+<meta property="article:modified_time" content="2020-08-03T17:40:23.935Z">
 <meta property="article:author" content="cjy">
-<meta property="article:tag" content="js基础">
-<meta property="article:tag" content="闭包">
-<meta property="article:tag" content="函数默认值">
+<meta property="article:tag" content="es6">
+<meta property="article:tag" content="箭头函数">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="emmm cjy" type="application/atom+xml">
@@ -157,40 +156,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-函数防抖与节流" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-箭头函数" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      函数防抖与节流
+      箭头函数
     </h1>
   
 
         
-        <a href="/2020/08/01/%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81/" class="archive-article-date">
-  	<time datetime="2020-08-01T14:46:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-01</time>
+        <a href="/2020/08/04/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/" class="archive-article-date">
+  	<time datetime="2020-08-03T17:37:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-04</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="函数防抖"><a href="#函数防抖" class="headerlink" title="函数防抖"></a>函数防抖</h3><p>函数防抖：在规定的n时间内只执行一次函数，如果在n秒内重新操作，则会重置该时间。</p>
-<h4 id="函数防抖代码实现"><a href="#函数防抖代码实现" class="headerlink" title="函数防抖代码实现"></a>函数防抖代码实现</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 实现函数防抖</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>callback 传入回调函数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>time 规定时间</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">callback, time</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> timer;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 每次调用都需要清除定时器</span></span><br><span class="line">        <span class="built_in">clearTimeout</span>(timer);</span><br><span class="line">        <span class="comment">// 保存arguments</span></span><br><span class="line">        <span class="keyword">let</span> args = <span class="built_in">arguments</span>;</span><br><span class="line">        timer = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">// time事件之后调用回调函数</span></span><br><span class="line">            callback.apply(<span class="literal">null</span>, args)</span><br><span class="line">        &#125;, time)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<blockquote>
-<p>老方法使用闭包获取timer，每次调用清除定时器，等到规定时间之后调用该回调函数。</p>
-</blockquote>
-<h3 id="函数节流"><a href="#函数节流" class="headerlink" title="函数节流"></a>函数节流</h3><p>函数节流：保证一个时间段内执行一次</p>
-<h4 id="函数节流代码实现"><a href="#函数节流代码实现" class="headerlink" title="函数节流代码实现"></a>函数节流代码实现</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function throttle(callback, time) &#123;</span><br><span class="line">    let timer;</span><br><span class="line">    return function() &#123;</span><br><span class="line">        &#x2F;&#x2F;变化的就是这里需要判断之前的timer是否有值了</span><br><span class="line">        if (timer) &#123;</span><br><span class="line">            return</span><br><span class="line">        &#125;</span><br><span class="line">        let args &#x3D; arguments;</span><br><span class="line">        timer &#x3D; setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">            callback.apply(null, args);</span><br><span class="line">            time &#x3D; null; &#x2F;&#x2F;需要清空定时器！！</span><br><span class="line">        &#125;，time)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>但是有时候我们希望函数节流能够<strong>立即执行</strong>，那么就可以将这个节流封装函数在优化一下，代码如下：</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * 函数节流具有立即执行的功能的封装</span><br><span class="line"> * @param &#123;*&#125; callback 回调函数</span><br><span class="line"> * @param &#123;*&#125; time 规定的时间</span><br><span class="line"> * @param &#123;Boolean&#125; immediately 是否立即执行，默认值为true</span><br><span class="line"> *&#x2F;</span><br><span class="line">function throttle(callback, time, immediately &#x3D; true) &#123;</span><br><span class="line">    &#x2F;&#x2F;判断是否立即执行</span><br><span class="line">    if (immediately) &#123;</span><br><span class="line">        let t;</span><br><span class="line">        return function() &#123;</span><br><span class="line">            if(immediately)&#123;</span><br><span class="line">                if (!t || Date.now() - t &gt;&#x3D; time) &#123; &#x2F;&#x2F;只有t不存在或者两者时间戳相差时间大于等于time才执行</span><br><span class="line">                    callback.apply(null, arguments);</span><br><span class="line">                    t &#x3D; Date.now()</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        let timer;</span><br><span class="line">        return function() &#123;</span><br><span class="line">            if (timer) &#123;</span><br><span class="line">                return</span><br><span class="line">            &#125;</span><br><span class="line">            let args &#x3D; arguments;</span><br><span class="line">            timer &#x3D; setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">                callback.apply(null, args);</span><br><span class="line">                timer &#x3D; null; &#x2F;&#x2F;这一步千万不能少</span><br><span class="line">            &#125;, time);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><p>回顾：this指向</p>
+<ol>
+<li>通过对象调用函数，this指向对象</li>
+<li>直接调用函数，this指向全局对象</li>
+<li>如果通过new调用函数，this指向新创建的对象</li>
+<li>如果通过apply、call、bind调用函数，this指向指定的数据</li>
+<li>如果是DOM事件函数，this指向事件源</li>
+</ol>
+<h2 id="使用语法"><a href="#使用语法" class="headerlink" title="使用语法"></a>使用语法</h2><a id="more"></a>
+<p>箭头函数是一个函数表达式，理论上，任何使用函数表达式的场景都可以使用箭头函数</p>
+<p>完整语法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(参数<span class="number">1</span>, 参数<span class="number">2</span>, ...)=&gt;&#123;</span><br><span class="line">    <span class="comment">//函数体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>函数防抖和函数节流的区别：<br>函数防抖：在一段时间内无论中途触发多少次都要等到<strong>动作结束之后</strong>才运行。<br>函数节流：无论触发多频繁<strong>每隔一段时间</strong>内执行。</p>
+<p>如果参数只有一个，可以省略小括号</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">参数 =&gt; &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果箭头函数只有一条返回语句，可以省略大括号，和return关键字</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">参数 =&gt; 返回值</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意细节"><a href="#注意细节" class="headerlink" title="注意细节"></a>注意细节</h2><ul>
+<li>箭头函数中，不存在this、arguments、new.target，如果使用了，则使用的是函数外层的对应的this、arguments、new.target</li>
+<li>箭头函数没有原型</li>
+<li>箭头函数不能作用构造函数使用</li>
+</ul>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><ol>
+<li>临时性使用的函数，并不会可以调用它，比如：<ol>
+<li>事件处理函数</li>
+<li>异步处理函数</li>
+<li>其他临时性的函数</li>
+</ol>
+</li>
+<li>为了绑定外层this的函数</li>
+<li>在不影响其他代码的情况下，保持代码的简洁，最常见的，数组方法中的回调函数</li>
+</ol>
 
       
 
@@ -204,15 +223,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">es6</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">闭包</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">函数默认值</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">箭头函数</a>
         		</li>
       		
 		</ul>
@@ -268,7 +283,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://winter1141151662.github.io/2020/08/01/%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://winter1141151662.github.io/2020/08/04/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -282,18 +297,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/08/01/%E5%9C%A3%E6%9D%AF%E6%A8%A1%E5%BC%8F/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/08/04/class-%E7%B1%BB/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          圣杯模式
+          (no title)
         
       </div>
     </a>
   
   
-    <a href="/2020/08/01/%E5%87%BD%E6%95%B0%E7%AE%A1%E9%81%93/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">函数管道</div>
+    <a href="/2020/08/04/apply-call-bind%E7%9A%84%E7%94%A8%E6%B3%95%E5%92%8C%E5%8C%BA%E5%88%AB/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">apply,call,bind的用法和区别</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -320,7 +335,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96"><span class="toc-number">1.</span> <span class="toc-text">函数防抖</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.1.</span> <span class="toc-text">函数防抖代码实现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E8%8A%82%E6%B5%81"><span class="toc-number">2.</span> <span class="toc-text">函数节流</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E8%8A%82%E6%B5%81%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.1.</span> <span class="toc-text">函数节流代码实现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">箭头函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E8%AF%AD%E6%B3%95"><span class="toc-number"></span> <span class="toc-text">使用语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E7%BB%86%E8%8A%82"><span class="toc-number"></span> <span class="toc-text">注意细节</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number"></span> <span class="toc-text">应用场景</span></a>
                     </div>
                 </span>
             </div>
