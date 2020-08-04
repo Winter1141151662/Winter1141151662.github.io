@@ -16,9 +16,10 @@
 <meta property="og:description" content="apply,call,bind的用法和区别用途:手动改变this的指向 区别：1.apply和call会使当前函数立即执行，bind会返回一个函数，后续需要时再调用  call是apply的语法糖，只有传的参数不同，call中要传多个任意参数，apply只可以直接传数组或者类数组  bind是为函数绑定一个this上下文   规则: fn.apply(上下文环境，执行所需数组)  fn.call(">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-08-03T16:56:43.000Z">
-<meta property="article:modified_time" content="2020-08-03T16:58:43.187Z">
+<meta property="article:modified_time" content="2020-08-04T15:29:11.886Z">
 <meta property="article:author" content="cjy">
 <meta property="article:tag" content="js基础">
+<meta property="article:tag" content="this指向">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="emmm cjy" type="application/atom+xml">
@@ -201,6 +202,10 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js基础</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">this指向</a>
         		</li>
       		
 		</ul>
@@ -420,7 +425,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">js基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">this指向</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">this</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -436,11 +457,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Array</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">api</a>
+                <a href="javascript:void(0)" class="js-tag color1">class</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -452,7 +469,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">函数默认值</a>
+                <a href="javascript:void(0)" class="js-tag color5">构造函数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -460,11 +477,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">构造函数</a>
+                <a href="javascript:void(0)" class="js-tag color1">Array</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">api</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">箭头函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">函数默认值</a>
               </li>
             
             <div class="clearfix"></div>
