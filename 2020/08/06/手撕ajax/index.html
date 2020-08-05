@@ -6,16 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://winter1141151662.github.io">
-  <title>Tag: arguments | emmm cjy</title>
+  <title>手撕ajax | emmm cjy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="my first blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="emmm cjy">
-<meta property="og:url" content="https://winter1141151662.github.io/tags/arguments/index.html">
+  <meta name="description" content="简单的实现ajax请求 假设是同步的  1234567891011121314151617181920let xhr &#x3D; null;&#x2F;&#x2F; 是否存在XMLHttpRequest方法if (window.XMLHttpRequest) &amp;#123;    xhr &#x3D; new XMLHttpRequest();&amp;#125; else if (window.ActiveXObject) &amp;#123; &#x2F;&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手撕ajax">
+<meta property="og:url" content="https://winter1141151662.github.io/2020/08/06/%E6%89%8B%E6%92%95ajax/index.html">
 <meta property="og:site_name" content="emmm cjy">
-<meta property="og:description" content="my first blog">
+<meta property="og:description" content="简单的实现ajax请求 假设是同步的  1234567891011121314151617181920let xhr &#x3D; null;&#x2F;&#x2F; 是否存在XMLHttpRequest方法if (window.XMLHttpRequest) &amp;#123;    xhr &#x3D; new XMLHttpRequest();&amp;#125; else if (window.ActiveXObject) &amp;#123; &#x2F;&#x2F;">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-08-05T17:17:08.000Z">
+<meta property="article:modified_time" content="2020-08-05T18:15:43.948Z">
 <meta property="article:author" content="cjy">
+<meta property="article:tag" content="网络基础">
+<meta property="article:tag" content="ajax">
+<meta property="article:tag" content="js基础">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="emmm cjy" type="application/atom+xml">
@@ -152,114 +157,187 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-手撕ajax" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/08/01/%E5%87%BD%E6%95%B0%E7%AE%A1%E9%81%93/" class="archive-article-date">
-  	<time datetime="2020-07-31T16:48:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-01</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/01/%E5%87%BD%E6%95%B0%E7%AE%A1%E9%81%93/">函数管道</a>
+    <h1 class="article-title" itemprop="name">
+      手撕ajax
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/08/06/%E6%89%8B%E6%92%95ajax/" class="archive-article-date">
+  	<time datetime="2020-08-05T17:17:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="简单的实现ajax请求"><a href="#简单的实现ajax请求" class="headerlink" title="简单的实现ajax请求"></a>简单的实现ajax请求</h3><blockquote>
+<p>假设是同步的</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> xhr = <span class="literal">null</span>;</span><br><span class="line"><span class="comment">// 是否存在XMLHttpRequest方法</span></span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;</span><br><span class="line">    xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">window</span>.ActiveXObject) &#123; <span class="comment">//是否存在ie的ActiveXObeject</span></span><br><span class="line">    xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">&#x27;Mcrosoft.XMLHttp&#x27;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123; <span class="comment">//如果都没有的话那只能GG</span></span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;你这版本也太低了吧&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> url = <span class="string">&quot;url&quot;</span>; <span class="comment">//假设这是一个url</span></span><br><span class="line">xhr.open(<span class="string">&#x27;get&#x27;</span>, url, <span class="literal">false</span>) <span class="comment">//第三个参数为是否异步，填true或不填为异步，反之</span></span><br><span class="line">xhr.send();</span><br><span class="line"><span class="comment">//给xhr添加状态变化的事件</span></span><br><span class="line">xhr.onreadystatechage = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//判断状态是否为4,服务端返回的状态为200</span></span><br><span class="line">    <span class="keyword">if</span> (xhr.readstate == <span class="number">4</span> &amp;&amp; xhr.status == <span class="number">200</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> data = <span class="built_in">JSON</span>.parse(xhr.responseText)</span><br><span class="line">        <span class="built_in">console</span>.log(data)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<blockquote>
+<p>既然做到了那我们试试简单实现jq里面的ajax函数</p>
+</blockquote>
+<p>我们假设传入的参数为</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ajax(&#123;</span><br><span class="line">    method:<span class="comment">//string  &#x27;get&#x27;或者&#x27;post&#x27;请求方式</span></span><br><span class="line">    <span class="keyword">async</span>:<span class="comment">//布尔值 是否异步</span></span><br><span class="line">    data:<span class="comment">//&#123;&#125;</span></span><br><span class="line">    success:<span class="comment">//func  成功回调函数</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>根据前面的ajax就可以简单的封装出如下函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// xhr 用于存储当前网络请求中的所有信息</span></span><br><span class="line">    <span class="keyword">var</span> xhr = <span class="literal">null</span>;</span><br><span class="line">    <span class="comment">// 判断当前浏览器是否含有XMLHTTPRequest对象（IE7+， Chrome, firefox及其他浏览器有的） 有的话 创建该对象  没有则判断是否含有ActiveXOject对象（IE6/5中特有的）</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">window</span>.XMLHttpRequest) &#123;</span><br><span class="line">        xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">window</span>.ActiveXObject) &#123;</span><br><span class="line">        xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">&#x27;Microsoft.XMLHTTP&#x27;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> alert(<span class="string">&#x27;当前浏览器不支持XMLHttpRequest&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> dataStr = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> options.data == <span class="string">&#x27;object&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> prop <span class="keyword">in</span> options.data) &#123;</span><br><span class="line">            <span class="keyword">if</span> (options.data.hasOwnProperty(prop)) &#123;</span><br><span class="line">                dataStr += prop + <span class="string">&#x27;=&#x27;</span> + options.data[prop] + <span class="string">&#x27;&amp;&#x27;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> options.data == <span class="string">&#x27;string&#x27;</span>) &#123;</span><br><span class="line">        dataStr = options.data;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// return alert(&#x27;数据格式只能为字符串或者对象&#x27;);</span></span><br><span class="line">        dataStr = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 默认当前请求是异步请求</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> options.async !== <span class="string">&#x27;boolean&#x27;</span>) &#123;</span><br><span class="line">        options.async = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    options.type = options.type.toUpperCase();</span><br><span class="line">    <span class="comment">// onreadystatechange事件是用来监听xhr 对象身上的readyState属性的</span></span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    xhr.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (xhr.readyState === <span class="number">4</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (xhr.status === <span class="number">200</span>) &#123;</span><br><span class="line">                <span class="comment">// &quot;我是xx&quot;  &quot;&#123;data: &#x27;xxx&#x27;&#125;&quot;  JSON.parse(xhr.responseText)</span></span><br><span class="line">                options.success(xhr.responseText);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (options.type == <span class="string">&#x27;GET&#x27;</span>) &#123;</span><br><span class="line">        <span class="comment">// key=value&amp;key1=value1</span></span><br><span class="line">        xhr.open(options.type, options.url + <span class="string">&#x27;?&#x27;</span> + dataStr, options.async);</span><br><span class="line">        xhr.send();</span><br><span class="line">    &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">        xhr.open(options.type, options.url, options.async);</span><br><span class="line">        <span class="comment">// key=value&amp;key1=value1</span></span><br><span class="line">        <span class="comment">// &#123;&#125;   appliction/json</span></span><br><span class="line">        <span class="comment">// xhr.setRequestHeader(&#x27;Content-Type&#x27;, &#x27;application/x-www-form-urlencoded&#x27;)</span></span><br><span class="line">        <span class="keyword">if</span>(options.headers) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> prop <span class="keyword">in</span> options.headers) &#123;</span><br><span class="line">                xhr.setRequestHeader(prop, options.headers[prop])</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        xhr.send(dataStr);</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络基础</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">ajax</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">闭包</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">arguments</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://winter1141151662.github.io/2020/08/06/%E6%89%8B%E6%92%95ajax/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/08/01/%E6%9F%AF%E7%90%86%E5%8C%96%E5%87%BD%E6%95%B0/" class="archive-article-date">
-  	<time datetime="2020-07-31T16:05:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-01</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2020/08/06/http%E7%8A%B6%E6%80%81%E7%A0%81/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          http状态码
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/08/06/http%E5%93%8D%E5%BA%94%E5%A4%B4%E9%87%8C%E9%83%BD%E6%9C%89%E4%BA%9B%E4%BB%80%E4%B9%88%EF%BC%9F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">http响应头里都有些什么？</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/01/%E6%9F%AF%E7%90%86%E5%8C%96%E5%87%BD%E6%95%B0/">柯理化函数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">闭包</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">arguments</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E5%AE%9E%E7%8E%B0ajax%E8%AF%B7%E6%B1%82"><span class="toc-number">1.</span> <span class="toc-text">简单的实现ajax请求</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -282,9 +360,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

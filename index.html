@@ -154,6 +154,342 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-http状态码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/06/http%E7%8A%B6%E6%80%81%E7%A0%81/">http状态码</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/06/http%E7%8A%B6%E6%80%81%E7%A0%81/" class="archive-article-date">
+  	<time datetime="2020-08-05T17:18:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="http状态码"><a href="#http状态码" class="headerlink" title="http状态码"></a>http状态码</h3><blockquote>
+<h4 id="1-信息，服务器收到请求，需要请求者继续执行操作"><a href="#1-信息，服务器收到请求，需要请求者继续执行操作" class="headerlink" title="1**    信息，服务器收到请求，需要请求者继续执行操作"></a>1**    信息，服务器收到请求，需要请求者继续执行操作</h4><p><strong>100    Continue</strong>    继续。客户端应继续其请求<br><strong>101 Switching Protocols</strong>    切换协议。服务器根据客户端的请求切换协议。只能切换到更高级的协议，例如，切换到HTTP的新版本协议</p>
+</blockquote>
+<blockquote>
+<h4 id="2-各种成功，操作被成功接收并处理"><a href="#2-各种成功，操作被成功接收并处理" class="headerlink" title="2**    各种成功，操作被成功接收并处理"></a>2**    各种成功，操作被成功接收并处理</h4><p><strong>200    OK</strong>    请求成功。一般用于GET与POST请求<br><strong>201    Created</strong>已创建。成功请求并创建了新的资源<br><strong>202    Accepted</strong>    已接受。已经接受请求，但未处理完成<br><strong>203    Non-Authoritative Information非授权信息。</strong> 请求成功。但返回的meta信息不在原始的服务器，而是一个副本<br><strong>204    No Content</strong>    无内容。服务器成功处理，但未返回内容。在未更新网页的情况下，可确保浏览器继续显示当前文档<br><strong>205    Reset Content</strong>    重置内容。服务器处理成功，用户终端（例如：浏览器）应重置文档视图。可通过此返回码清除浏览器的表单域<br><strong>206    Partial Content</strong>    部分内容。服务器成功处理了部分GET请求</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2020/08/06/http%E7%8A%B6%E6%80%81%E7%A0%81/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络基础</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/06/http%E7%8A%B6%E6%80%81%E7%A0%81/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-手撕ajax" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/06/%E6%89%8B%E6%92%95ajax/">手撕ajax</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/06/%E6%89%8B%E6%92%95ajax/" class="archive-article-date">
+  	<time datetime="2020-08-05T17:17:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="简单的实现ajax请求"><a href="#简单的实现ajax请求" class="headerlink" title="简单的实现ajax请求"></a>简单的实现ajax请求</h3><blockquote>
+<p>假设是同步的</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> xhr = <span class="literal">null</span>;</span><br><span class="line"><span class="comment">// 是否存在XMLHttpRequest方法</span></span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;</span><br><span class="line">    xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">window</span>.ActiveXObject) &#123; <span class="comment">//是否存在ie的ActiveXObeject</span></span><br><span class="line">    xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">&#x27;Mcrosoft.XMLHttp&#x27;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123; <span class="comment">//如果都没有的话那只能GG</span></span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;你这版本也太低了吧&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> url = <span class="string">&quot;url&quot;</span>; <span class="comment">//假设这是一个url</span></span><br><span class="line">xhr.open(<span class="string">&#x27;get&#x27;</span>, url, <span class="literal">false</span>) <span class="comment">//第三个参数为是否异步，填true或不填为异步，反之</span></span><br><span class="line">xhr.send();</span><br><span class="line"><span class="comment">//给xhr添加状态变化的事件</span></span><br><span class="line">xhr.onreadystatechage = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//判断状态是否为4,服务端返回的状态为200</span></span><br><span class="line">    <span class="keyword">if</span> (xhr.readstate == <span class="number">4</span> &amp;&amp; xhr.status == <span class="number">200</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> data = <span class="built_in">JSON</span>.parse(xhr.responseText)</span><br><span class="line">        <span class="built_in">console</span>.log(data)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2020/08/06/%E6%89%8B%E6%92%95ajax/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络基础</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">ajax</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/06/%E6%89%8B%E6%92%95ajax/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-http响应头里都有些什么？" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/06/http%E5%93%8D%E5%BA%94%E5%A4%B4%E9%87%8C%E9%83%BD%E6%9C%89%E4%BA%9B%E4%BB%80%E4%B9%88%EF%BC%9F/">http响应头里都有些什么？</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/06/http%E5%93%8D%E5%BA%94%E5%A4%B4%E9%87%8C%E9%83%BD%E6%9C%89%E4%BA%9B%E4%BB%80%E4%B9%88%EF%BC%9F/" class="archive-article-date">
+  	<time datetime="2020-08-05T17:11:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>转载自：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/hxc555/p/6506154.html">https://www.cnblogs.com/hxc555/p/6506154.html</a></p>
+<h3 id="每个HTTP请求和响应都会带有相应的头部信息。默认情况下，在发送XHR请求的同时，还会发送下列头部信息："><a href="#每个HTTP请求和响应都会带有相应的头部信息。默认情况下，在发送XHR请求的同时，还会发送下列头部信息：" class="headerlink" title="每个HTTP请求和响应都会带有相应的头部信息。默认情况下，在发送XHR请求的同时，还会发送下列头部信息："></a>每个HTTP请求和响应都会带有相应的头部信息。默认情况下，在发送XHR请求的同时，还会发送下列头部信息：</h3><p>Accept:浏览器能够处理的内容类型<br>Accept-Charset:浏览器能够显示的字符集<br>Accept-Encoding：浏览器能够处理的压缩编码<br>Accept-Language：浏览器当前设置的语言<br>Connection：浏览器与服务器之间连接的类型<br>Cookie：当前页面设置的任何Cookie<br>Host：发出请求的页面所在的域<br>Referer：发出请求的页面的URL<br>User-Agent：浏览器的用户代理字符串</p>
+<h4 id="虽然不同浏览器实际发送的头部信息会有所不同，但以上列出的基本上是浏览器都会发送的，用setRequestHeader-方法也可以设置请求头信息，该函数接受两个参数：头部字段的名称和头部字段的值。要成功发送请求头部信息，需在调用open方法之后且调用send方法之前调用。"><a href="#虽然不同浏览器实际发送的头部信息会有所不同，但以上列出的基本上是浏览器都会发送的，用setRequestHeader-方法也可以设置请求头信息，该函数接受两个参数：头部字段的名称和头部字段的值。要成功发送请求头部信息，需在调用open方法之后且调用send方法之前调用。" class="headerlink" title="虽然不同浏览器实际发送的头部信息会有所不同，但以上列出的基本上是浏览器都会发送的，用setRequestHeader()方法也可以设置请求头信息，该函数接受两个参数：头部字段的名称和头部字段的值。要成功发送请求头部信息，需在调用open方法之后且调用send方法之前调用。"></a>虽然不同浏览器实际发送的头部信息会有所不同，但以上列出的基本上是浏览器都会发送的，用setRequestHeader()方法也可以设置请求头信息，该函数接受两个参数：头部字段的名称和头部字段的值。要成功发送请求头部信息，需在调用open方法之后且调用send方法之前调用。</h4><p>HTTP响应头部信息：</p>
+<p>Date：表示消息发送的时间，时间的描述格式由rfc822定义<br>server:服务器名字。<br>Connection：浏览器与服务器之间连接的类型<br>content-type:表示后面的文档属于什么MIME类型<br>Cache-Control：控制HTTP缓存</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络基础</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/06/http%E5%93%8D%E5%BA%94%E5%A4%B4%E9%87%8C%E9%83%BD%E6%9C%89%E4%BA%9B%E4%BB%80%E4%B9%88%EF%BC%9F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-js基础数据类型的转换" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/06/js%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E8%BD%AC%E6%8D%A2/">js基础数据类型的转换</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/06/js%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E8%BD%AC%E6%8D%A2/" class="archive-article-date">
+  	<time datetime="2020-08-05T16:48:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>一下为常见的基础数据类型转换</p>
+</blockquote>
+<h3 id="转换为Boolean"><a href="#转换为Boolean" class="headerlink" title="转换为Boolean"></a>转换为Boolean</h3><p>number           —-&gt; 除了+-0 NaN都为true<br>string           —-&gt; 除了空字符串都为true<br>undefined、null  —-&gt; false<br>引用类型         —-&gt; true</p>
+        
+          <a class="article-more-a" href="/2020/08/06/js%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E8%BD%AC%E6%8D%A2/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js基础</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">类型转换</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/06/js%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E8%BD%AC%E6%8D%A2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-GET-和POST的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -174,12 +510,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Get与Post请求方式的区别"><a href="#Get与Post请求方式的区别" class="headerlink" title="Get与Post请求方式的区别"></a>Get与Post请求方式的区别</h3><h4 id="1-是基于什么前提的？"><a href="#1-是基于什么前提的？" class="headerlink" title="1.是基于什么前提的？"></a>1.是基于什么前提的？</h4><p>   如果什么前提都没有，不使用任何规范，只考虑语法和理论上的 HTTP协议。GET和POST几乎没有什么区别，只有名字不一样。 </p>
-<h4 id="2-如果是基于RFC规范的。"><a href="#2-如果是基于RFC规范的。" class="headerlink" title="2.如果是基于RFC规范的。"></a>2.如果是基于RFC规范的。</h4><p><strong>（1）理论上的</strong>（Speciﬁcation）：GET和POST具有相同语法的，但是有不同的语义。 get是用来获取数据的，post是用来发送数据的，其他方面没有区别。<br><strong>（2）实现上的</strong>（Implementation）：各种浏览器，就是这个规范的实现者。<br>常见的那些不同：                </p>
-<blockquote>
-<p>   1）GET的数据在URL是可见的。POST请求不显示在URL中而在请求体中。<br>    2）GET对长度是有限制的，POST长度是无限的。<br>    3）GET请求的数据可以收藏为书签，post请求到的数据不不可收藏为书 签。<br>    4）GET请求后，按后退按钮、刷新按钮无影响，post数据会被重新提 交。<br>    5）GET编码类型：application/x-www-form-urlencoded，post的编码类型：有很多种。 例如：<br>    encodeapplication/x-www-form-urlencoded<br>    multipart/form-data<br>    6）GET历史参数会被保留留在浏览器⾥，psot不会保存在浏览器中的。<br>    7）GET只允许ASCII,post没有编码限制，允许发二进制的。<br>    8）GET与POST相比，GET安全性较差，因为所发的数据是URL的一部分</p>
-</blockquote>
-
+        <h3 id="Get与Post请求方式的区别"><a href="#Get与Post请求方式的区别" class="headerlink" title="Get与Post请求方式的区别"></a>Get与Post请求方式的区别</h3><h4 id="1-是基于什么前提的？"><a href="#1-是基于什么前提的？" class="headerlink" title="1.是基于什么前提的？"></a>1.是基于什么前提的？</h4>
+        
+          <a class="article-more-a" href="/2020/08/05/GET-%E5%92%8CPOST%E7%9A%84%E5%8C%BA%E5%88%AB/#more">more >></a>
+        
       
 
       
@@ -673,334 +1007,6 @@
 
 
   
-    <article id="post-let-const" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/04/let-const/">let,const</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/04/let-const/" class="archive-article-date">
-  	<time datetime="2020-08-03T16:22:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="使用let声明变量"><a href="#使用let声明变量" class="headerlink" title="使用let声明变量"></a>使用let声明变量</h2><p>ES6不仅引入let关键字用于解决变量声明的问题，同时引入了块级作用域的概念</p>
-<p>块级作用域：代码执行时遇到花括号，会创建一个块级作用域，花括号结束，销毁块级作用域</p>
-<p>声明变量的问题</p>
-<ol>
-<li>全局变量挂载到全局对象：全局对象成员污染问题</li>
-</ol>
-<p>let声明的变量不会挂载到全局对象</p>
-<ol start="2">
-<li>允许重复的变量声明：导致数据被覆盖</li>
-</ol>
-<p>let声明的变量，不允许当前作用域范围内重复声明</p>
-<p><strong>在块级作用域中用let定义的变量，在作用域外不能访问</strong></p>
-<ol start="3">
-<li>变量提升：怪异的数据访问、闭包问题
-        
-          <a class="article-more-a" href="/2020/08/04/let-const/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">es6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/04/let-const/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-构造函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/02/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/">构造函数</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/02/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/" class="archive-article-date">
-  	<time datetime="2020-08-01T16:34:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><p>new之后，函数内部发生了什么事：<br>1.构建了一个对象。<br>2.赋予一个作用域，将this指向自己。<br>3.该函数的__proto__隐式原型指向之前函数的prototype原型。<br>4.默认return this，也就是返回新对象。</p>
-<blockquote>
-<p>注意点：如果构造函数存在返回值，如果返回的是<strong>原始类型则忽略</strong>即不会对return新对象有任何影响，如果返回是引用类型，则会使用返回的结果。</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">构造函数</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/02/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-圣杯模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/01/%E5%9C%A3%E6%9D%AF%E6%A8%A1%E5%BC%8F/">圣杯模式</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/01/%E5%9C%A3%E6%9D%AF%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2020-08-01T15:51:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inherit</span>(<span class="params">target, origin</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> F = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">    F.prototype = origin.prototype;</span><br><span class="line">    target.prototype = <span class="keyword">new</span> F();</span><br><span class="line">    target.prototype.constructor = target; <span class="comment">//调整一下constructor</span></span><br><span class="line">    target.prototype.uber = origin.prototype</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 利用闭包实现函数F私有化</span></span><br><span class="line"><span class="keyword">let</span> inherit = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> F = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">target, origin</span>) </span>&#123;</span><br><span class="line">        F.prototype = origin.prototype;</span><br><span class="line">        target.prototype = <span class="keyword">new</span> F();</span><br><span class="line">        target.prototype.constructor = target;</span><br><span class="line">        target.prototype.uber = origin.prototype</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">闭包</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">原型链</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/01/%E5%9C%A3%E6%9D%AF%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-函数防抖与节流" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/01/%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81/">函数防抖与节流</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/01/%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81/" class="archive-article-date">
-  	<time datetime="2020-08-01T14:46:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="函数防抖"><a href="#函数防抖" class="headerlink" title="函数防抖"></a>函数防抖</h3><p>函数防抖：在规定的n时间内只执行一次函数，如果在n秒内重新操作，则会重置该时间。</p>
-<h4 id="函数防抖代码实现"><a href="#函数防抖代码实现" class="headerlink" title="函数防抖代码实现"></a>函数防抖代码实现</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 实现函数防抖</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>callback 传入回调函数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>time 规定时间</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">callback, time</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> timer;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 每次调用都需要清除定时器</span></span><br><span class="line">        <span class="built_in">clearTimeout</span>(timer);</span><br><span class="line">        <span class="comment">// 保存arguments</span></span><br><span class="line">        <span class="keyword">let</span> args = <span class="built_in">arguments</span>;</span><br><span class="line">        timer = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">// time事件之后调用回调函数</span></span><br><span class="line">            callback.apply(<span class="literal">null</span>, args)</span><br><span class="line">        &#125;, time)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2020/08/01/%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">闭包</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">函数默认值</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/01/%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1118,14 +1124,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JSX语法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
@@ -1134,19 +1132,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">闭包</a>
+                <a href="javascript:void(0)" class="js-tag color5">类型转换</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">arguments</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">构造函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">原型链</a>
+                <a href="javascript:void(0)" class="js-tag color1">JSX语法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1158,11 +1152,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">箭头函数</a>
+                <a href="javascript:void(0)" class="js-tag color3">闭包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">arguments</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">函数默认值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">原型链</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">构造函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">箭头函数</a>
               </li>
             
             <div class="clearfix"></div>

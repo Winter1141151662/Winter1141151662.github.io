@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://winter1141151662.github.io">
-  <title>Tag: arguments | emmm cjy</title>
+  <title>http响应头里都有些什么？ | emmm cjy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="my first blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="emmm cjy">
-<meta property="og:url" content="https://winter1141151662.github.io/tags/arguments/index.html">
+  <meta name="description" content="转载自：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;hxc555&#x2F;p&#x2F;6506154.html 每个HTTP请求和响应都会带有相应的头部信息。默认情况下，在发送XHR请求的同时，还会发送下列头部信息：Accept:浏览器能够处理的内容类型Accept-Charset:浏览器能够显示的字符集Accept-Encoding：浏览器能够处理的压缩编码Accept-Language：浏览器当前设置的语">
+<meta property="og:type" content="article">
+<meta property="og:title" content="http响应头里都有些什么？">
+<meta property="og:url" content="https://winter1141151662.github.io/2020/08/06/http%E5%93%8D%E5%BA%94%E5%A4%B4%E9%87%8C%E9%83%BD%E6%9C%89%E4%BA%9B%E4%BB%80%E4%B9%88%EF%BC%9F/index.html">
 <meta property="og:site_name" content="emmm cjy">
-<meta property="og:description" content="my first blog">
+<meta property="og:description" content="转载自：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;hxc555&#x2F;p&#x2F;6506154.html 每个HTTP请求和响应都会带有相应的头部信息。默认情况下，在发送XHR请求的同时，还会发送下列头部信息：Accept:浏览器能够处理的内容类型Accept-Charset:浏览器能够显示的字符集Accept-Encoding：浏览器能够处理的压缩编码Accept-Language：浏览器当前设置的语">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-08-05T17:11:21.000Z">
+<meta property="article:modified_time" content="2020-08-05T17:16:19.588Z">
 <meta property="article:author" content="cjy">
+<meta property="article:tag" content="网络基础">
+<meta property="article:tag" content="js基础">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="emmm cjy" type="application/atom+xml">
@@ -152,114 +156,175 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-http响应头里都有些什么？" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/08/01/%E5%87%BD%E6%95%B0%E7%AE%A1%E9%81%93/" class="archive-article-date">
-  	<time datetime="2020-07-31T16:48:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-01</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/01/%E5%87%BD%E6%95%B0%E7%AE%A1%E9%81%93/">函数管道</a>
+    <h1 class="article-title" itemprop="name">
+      http响应头里都有些什么？
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/08/06/http%E5%93%8D%E5%BA%94%E5%A4%B4%E9%87%8C%E9%83%BD%E6%9C%89%E4%BA%9B%E4%BB%80%E4%B9%88%EF%BC%9F/" class="archive-article-date">
+  	<time datetime="2020-08-05T17:11:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>转载自：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/hxc555/p/6506154.html">https://www.cnblogs.com/hxc555/p/6506154.html</a></p>
+<h3 id="每个HTTP请求和响应都会带有相应的头部信息。默认情况下，在发送XHR请求的同时，还会发送下列头部信息："><a href="#每个HTTP请求和响应都会带有相应的头部信息。默认情况下，在发送XHR请求的同时，还会发送下列头部信息：" class="headerlink" title="每个HTTP请求和响应都会带有相应的头部信息。默认情况下，在发送XHR请求的同时，还会发送下列头部信息："></a>每个HTTP请求和响应都会带有相应的头部信息。默认情况下，在发送XHR请求的同时，还会发送下列头部信息：</h3><p>Accept:浏览器能够处理的内容类型<br>Accept-Charset:浏览器能够显示的字符集<br>Accept-Encoding：浏览器能够处理的压缩编码<br>Accept-Language：浏览器当前设置的语言<br>Connection：浏览器与服务器之间连接的类型<br>Cookie：当前页面设置的任何Cookie<br>Host：发出请求的页面所在的域<br>Referer：发出请求的页面的URL<br>User-Agent：浏览器的用户代理字符串</p>
+<h4 id="虽然不同浏览器实际发送的头部信息会有所不同，但以上列出的基本上是浏览器都会发送的，用setRequestHeader-方法也可以设置请求头信息，该函数接受两个参数：头部字段的名称和头部字段的值。要成功发送请求头部信息，需在调用open方法之后且调用send方法之前调用。"><a href="#虽然不同浏览器实际发送的头部信息会有所不同，但以上列出的基本上是浏览器都会发送的，用setRequestHeader-方法也可以设置请求头信息，该函数接受两个参数：头部字段的名称和头部字段的值。要成功发送请求头部信息，需在调用open方法之后且调用send方法之前调用。" class="headerlink" title="虽然不同浏览器实际发送的头部信息会有所不同，但以上列出的基本上是浏览器都会发送的，用setRequestHeader()方法也可以设置请求头信息，该函数接受两个参数：头部字段的名称和头部字段的值。要成功发送请求头部信息，需在调用open方法之后且调用send方法之前调用。"></a>虽然不同浏览器实际发送的头部信息会有所不同，但以上列出的基本上是浏览器都会发送的，用setRequestHeader()方法也可以设置请求头信息，该函数接受两个参数：头部字段的名称和头部字段的值。要成功发送请求头部信息，需在调用open方法之后且调用send方法之前调用。</h4><p>HTTP响应头部信息：</p>
+<p>Date：表示消息发送的时间，时间的描述格式由rfc822定义<br>server:服务器名字。<br>Connection：浏览器与服务器之间连接的类型<br>content-type:表示后面的文档属于什么MIME类型<br>Cache-Control：控制HTTP缓存</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络基础</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">闭包</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">arguments</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://winter1141151662.github.io/2020/08/06/http%E5%93%8D%E5%BA%94%E5%A4%B4%E9%87%8C%E9%83%BD%E6%9C%89%E4%BA%9B%E4%BB%80%E4%B9%88%EF%BC%9F/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/08/01/%E6%9F%AF%E7%90%86%E5%8C%96%E5%87%BD%E6%95%B0/" class="archive-article-date">
-  	<time datetime="2020-07-31T16:05:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-01</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2020/08/06/%E6%89%8B%E6%92%95ajax/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          手撕ajax
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/08/06/js%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E8%BD%AC%E6%8D%A2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">js基础数据类型的转换</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/01/%E6%9F%AF%E7%90%86%E5%8C%96%E5%87%BD%E6%95%B0/">柯理化函数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">闭包</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">arguments</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AF%8F%E4%B8%AAHTTP%E8%AF%B7%E6%B1%82%E5%92%8C%E5%93%8D%E5%BA%94%E9%83%BD%E4%BC%9A%E5%B8%A6%E6%9C%89%E7%9B%B8%E5%BA%94%E7%9A%84%E5%A4%B4%E9%83%A8%E4%BF%A1%E6%81%AF%E3%80%82%E9%BB%98%E8%AE%A4%E6%83%85%E5%86%B5%E4%B8%8B%EF%BC%8C%E5%9C%A8%E5%8F%91%E9%80%81XHR%E8%AF%B7%E6%B1%82%E7%9A%84%E5%90%8C%E6%97%B6%EF%BC%8C%E8%BF%98%E4%BC%9A%E5%8F%91%E9%80%81%E4%B8%8B%E5%88%97%E5%A4%B4%E9%83%A8%E4%BF%A1%E6%81%AF%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">每个HTTP请求和响应都会带有相应的头部信息。默认情况下，在发送XHR请求的同时，还会发送下列头部信息：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%99%BD%E7%84%B6%E4%B8%8D%E5%90%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AE%9E%E9%99%85%E5%8F%91%E9%80%81%E7%9A%84%E5%A4%B4%E9%83%A8%E4%BF%A1%E6%81%AF%E4%BC%9A%E6%9C%89%E6%89%80%E4%B8%8D%E5%90%8C%EF%BC%8C%E4%BD%86%E4%BB%A5%E4%B8%8A%E5%88%97%E5%87%BA%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%B8%8A%E6%98%AF%E6%B5%8F%E8%A7%88%E5%99%A8%E9%83%BD%E4%BC%9A%E5%8F%91%E9%80%81%E7%9A%84%EF%BC%8C%E7%94%A8setRequestHeader-%E6%96%B9%E6%B3%95%E4%B9%9F%E5%8F%AF%E4%BB%A5%E8%AE%BE%E7%BD%AE%E8%AF%B7%E6%B1%82%E5%A4%B4%E4%BF%A1%E6%81%AF%EF%BC%8C%E8%AF%A5%E5%87%BD%E6%95%B0%E6%8E%A5%E5%8F%97%E4%B8%A4%E4%B8%AA%E5%8F%82%E6%95%B0%EF%BC%9A%E5%A4%B4%E9%83%A8%E5%AD%97%E6%AE%B5%E7%9A%84%E5%90%8D%E7%A7%B0%E5%92%8C%E5%A4%B4%E9%83%A8%E5%AD%97%E6%AE%B5%E7%9A%84%E5%80%BC%E3%80%82%E8%A6%81%E6%88%90%E5%8A%9F%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82%E5%A4%B4%E9%83%A8%E4%BF%A1%E6%81%AF%EF%BC%8C%E9%9C%80%E5%9C%A8%E8%B0%83%E7%94%A8open%E6%96%B9%E6%B3%95%E4%B9%8B%E5%90%8E%E4%B8%94%E8%B0%83%E7%94%A8send%E6%96%B9%E6%B3%95%E4%B9%8B%E5%89%8D%E8%B0%83%E7%94%A8%E3%80%82"><span class="toc-number">1.1.</span> <span class="toc-text">虽然不同浏览器实际发送的头部信息会有所不同，但以上列出的基本上是浏览器都会发送的，用setRequestHeader()方法也可以设置请求头信息，该函数接受两个参数：头部字段的名称和头部字段的值。要成功发送请求头部信息，需在调用open方法之后且调用send方法之前调用。</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -282,9 +347,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
