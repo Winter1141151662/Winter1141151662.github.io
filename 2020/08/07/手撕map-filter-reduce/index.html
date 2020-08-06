@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://winter1141151662.github.io">
-  <title>Tag: 类型转换 | emmm cjy</title>
+  <title>手撕map,filter,reduce | emmm cjy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="my first blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="emmm cjy">
-<meta property="og:url" content="https://winter1141151662.github.io/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/index.html">
+  <meta name="description" content="开撕！！  1234567891011121314151617181920212223242526272829303132333435363738394041424344454647&#x2F;&#x2F; 传入的数组，map回调函数function map(arr, mapCb) &amp;#123;    &#x2F;&#x2F; 先做验证    if (typeof mapCb !&#x3D;&#x3D; &amp;#x27;function&amp;#x27; || a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手撕map,filter,reduce">
+<meta property="og:url" content="https://winter1141151662.github.io/2020/08/07/%E6%89%8B%E6%92%95map-filter-reduce/index.html">
 <meta property="og:site_name" content="emmm cjy">
-<meta property="og:description" content="my first blog">
+<meta property="og:description" content="开撕！！  1234567891011121314151617181920212223242526272829303132333435363738394041424344454647&#x2F;&#x2F; 传入的数组，map回调函数function map(arr, mapCb) &amp;#123;    &#x2F;&#x2F; 先做验证    if (typeof mapCb !&#x3D;&#x3D; &amp;#x27;function&amp;#x27; || a">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-08-06T17:05:38.000Z">
+<meta property="article:modified_time" content="2020-08-06T17:32:19.808Z">
 <meta property="article:author" content="cjy">
+<meta property="article:tag" content="js基础">
+<meta property="article:tag" content="array api手撕">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="emmm cjy" type="application/atom+xml">
@@ -152,36 +156,37 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-手撕map-filter-reduce" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/08/06/js%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E8%BD%AC%E6%8D%A2/" class="archive-article-date">
-  	<time datetime="2020-08-05T16:48:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-06</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/06/js%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E8%BD%AC%E6%8D%A2/">js基础数据类型的转换</a>
+    <h1 class="article-title" itemprop="name">
+      手撕map,filter,reduce
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/08/07/%E6%89%8B%E6%92%95map-filter-reduce/" class="archive-article-date">
+  	<time datetime="2020-08-06T17:05:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>开撕！！</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 传入的数组，map回调函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">map</span>(<span class="params">arr, mapCb</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 先做验证</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> mapCb !== <span class="string">&#x27;function&#x27;</span> || arr.length === <span class="number">0</span> || !<span class="built_in">Array</span>.isArray(arr)) &#123;</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 不对原数组进行变动，将得到的值加入到新数组</span></span><br><span class="line">    <span class="keyword">let</span> mapList = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        <span class="comment">// 将回调后得到的值加入数组</span></span><br><span class="line">        mapList.push(mapCb(arr[i], i, arr))</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> mapList</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">filter</span>(<span class="params">arr, filterCb</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 先做判断</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">Array</span>.isArray(arr) || arr.length === <span class="number">0</span> || <span class="keyword">typeof</span> filterCb !== <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 老样子不要改动原来的数组</span></span><br><span class="line">    <span class="keyword">let</span> filterList = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        <span class="comment">// 判断是否是需要的数组</span></span><br><span class="line">        <span class="keyword">if</span> (filterCb(arr[i], i, arr)) &#123;</span><br><span class="line">            filterList.push(arr[i])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> filterList</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// arr数组，reduce回调函数 第二个参数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reduce</span>(<span class="params">arr, reduceCb, initialValue</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 老规矩先做判断</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">Array</span>.isArray(arr) || <span class="keyword">typeof</span> initialValue !== <span class="string">&quot;function&quot;</span> || arr.length === <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 初始化第二个参数，不要对传入的值进行变动</span></span><br><span class="line">    <span class="keyword">let</span> value = initialValue ? initialValue : arr[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = initialValue ? <span class="number">1</span> : <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        <span class="comment">// 循环得到上一次回调后的值</span></span><br><span class="line">        value = reduceCb(value, arr[i], i, arr)</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 返回值</span></span><br><span class="line">    <span class="keyword">return</span> value</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -191,25 +196,125 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">类型转换</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">array api手撕</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://winter1141151662.github.io/2020/08/07/%E6%89%8B%E6%92%95map-filter-reduce/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/08/07/http%E6%9C%89%E5%93%AA%E4%BA%9B%E5%B8%B8%E8%A7%81%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%EF%BC%9F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">http有哪些常见请求方式？</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -232,9 +337,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
