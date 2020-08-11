@@ -154,6 +154,106 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-事件循环" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/12/%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/">事件循环</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/12/%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/" class="archive-article-date">
+  	<time datetime="2020-08-11T16:14:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>JS运行的环境称之为宿主环境。（下面只针对于浏览器环境下）</p>
+<p>执行栈：call stack，一个数据结构，用于存放各种函数的执行环境，每一个函数执行之前，它的相关信息会加入到执行栈。函数调用之前，创建执行环境，然后加入到执行栈；函数调用之后，销毁执行环境。</p>
+<p>JS引擎永远执行的是执行栈的最顶部。</p>
+<p>异步函数：某些函数不会立即执行，需要等到某个时机到达后才会执行，这样的函数称之为异步函数。比如事件处理函数。异步函数的执行时机，会被宿主环境控制。</p>
+<p>浏览器宿主环境中包含5个线程：</p>
+<ol>
+<li>JS引擎：负责执行执行栈的最顶部代码</li>
+<li>GUI线程：负责渲染页面 </li>
+<li>事件监听线程：负责监听各种事件</li>
+<li>计时线程：负责计时</li>
+<li>网络线程：负责网络通信</li>
+</ol>
+<p>当上面的线程发生了某些事请，如果该线程发现，这件事情有处理程序，它会将该处理程序加入一个叫做事件队列的内存。当JS引擎发现，执行栈中已经没有了任何内容后，会将事件队列中的第一个函数加入到执行栈中执行。</p>
+<p>JS引擎对事件队列的取出执行方式，以及与宿主环境的配合，称之为事件循环。</p>
+<p>事件队列在不同的宿主环境中有所差异，大部分宿主环境会将事件队列进行细分。在浏览器中，事件队列分为两种：</p>
+<ul>
+<li>宏任务（队列）：macroTask，计时器结束的回调、事件回调、http回调等等绝大部分异步函数进入宏队列</li>
+<li>微任务（队列）：MutationObserver(vue里面的watch用的就是这个)，Promise产生的回调进入微队列</li>
+</ul>
+<blockquote>
+<p>MutationObserver用于监听某个DOM对象的变化</p>
+</blockquote>
+<p>当执行栈清空时，JS引擎首先会将微任务中的所有任务依次执行结束，如果没有微任务，则执行宏任务。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js基础</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">event loop</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/12/%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-手撕map-filter-reduce" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -278,11 +378,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js基础</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络基础</a>
         		</li>
       		
 		</ul>
@@ -358,11 +458,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js基础</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络基础</a>
         		</li>
       		
 		</ul>
@@ -443,11 +543,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js基础</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络基础</a>
         		</li>
       		
 		</ul>
@@ -526,15 +626,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js基础</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络基础</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">ajax</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js基础</a>
         		</li>
       		
 		</ul>
@@ -611,11 +711,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js基础</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络基础</a>
         		</li>
       		
 		</ul>
@@ -898,105 +998,6 @@
 
 
   
-    <article id="post-class-类" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/04/class-%E7%B1%BB/">class-类</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/04/class-%E7%B1%BB/" class="archive-article-date">
-  	<time datetime="2020-08-03T17:44:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="传统的构造函数的问题"><a href="#传统的构造函数的问题" class="headerlink" title="传统的构造函数的问题"></a>传统的构造函数的问题</h3><ol>
-<li>属性和原型方法定义分离，降低了可读性</li>
-<li>原型成员可以被枚举</li>
-<li>默认情况下，构造函数仍然可以被当作普通函数使用</li>
-</ol>
-<h3 id="类的特点"><a href="#类的特点" class="headerlink" title="类的特点"></a>类的特点</h3><ol>
-<li>类声明不会被提升，与 let 和 const 一样，存在暂时性死区</li>
-<li>类中的所有代码均在严格模式下执行</li>
-<li>类的所有方法都是不可枚举的</li>
-<li>类的所有方法都无法被当作构造函数使用</li>
-<li>类的构造器必须使用 new 来调用</li>
-</ol>
-<h3 id="类的其他书写方式"><a href="#类的其他书写方式" class="headerlink" title="类的其他书写方式"></a>类的其他书写方式</h3><ol>
-<li><p>可计算的成员名</p>
-</li>
-<li><p>getter和setter</p>
-</li>
-</ol>
-<p>Object.defineProperty 可定义某个对象成员属性的读取和设置</p>
-<p>使用getter和setter控制的属性，不在原型上</p>
-        
-          <a class="article-more-a" href="/2020/08/04/class-%E7%B1%BB/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">es6</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">class</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/04/class-%E7%B1%BB/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1094,14 +1095,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">js基础</a>
               </li>
              
@@ -1118,7 +1111,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">this</a>
+                <a href="javascript:void(0)" class="js-tag color5">网络基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1130,7 +1123,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">类型转换</a>
+                <a href="javascript:void(0)" class="js-tag color1">event loop</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1139,22 +1132,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">arguments</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">原型链</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">array api手撕</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">箭头函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">构造函数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1167,6 +1144,34 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">函数默认值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">this</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">原型链</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">类型转换</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">箭头函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">构造函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">array api手撕</a>
               </li>
             
             <div class="clearfix"></div>
