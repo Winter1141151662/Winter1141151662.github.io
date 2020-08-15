@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://winter1141151662.github.io">
-  <title>Tag: 箭头函数 | emmm cjy</title>
+  <title>fetch | emmm cjy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="my first blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="emmm cjy">
-<meta property="og:url" content="https://winter1141151662.github.io/tags/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/index.html">
+  <meta name="description" content="Fetch与HttpRequest的对比XMLHttpRequest  所有的功能全部集中在同一个对象上，容易书写出混乱不易维护的代码 最重要的是无法适配Promise  Fetch Api 的特点  并非取代 AJAX，而是对 AJAX 传统 API 的改进 精细的功能分割：头部信息、请求信息、响应信息等均分布到不同的对象，更利于处理各种复杂的 AJAX 场景 使用 Promise Api，更利">
+<meta property="og:type" content="article">
+<meta property="og:title" content="fetch">
+<meta property="og:url" content="https://winter1141151662.github.io/2020/08/16/fetch/index.html">
 <meta property="og:site_name" content="emmm cjy">
-<meta property="og:description" content="my first blog">
+<meta property="og:description" content="Fetch与HttpRequest的对比XMLHttpRequest  所有的功能全部集中在同一个对象上，容易书写出混乱不易维护的代码 最重要的是无法适配Promise  Fetch Api 的特点  并非取代 AJAX，而是对 AJAX 传统 API 的改进 精细的功能分割：头部信息、请求信息、响应信息等均分布到不同的对象，更利于处理各种复杂的 AJAX 场景 使用 Promise Api，更利">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-08-15T17:00:36.000Z">
+<meta property="article:modified_time" content="2020-08-15T17:06:11.505Z">
 <meta property="article:author" content="cjy">
+<meta property="article:tag" content="网络基础">
+<meta property="article:tag" content="Promise">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="emmm cjy" type="application/atom+xml">
@@ -152,64 +156,179 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-fetch" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/08/04/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/" class="archive-article-date">
-  	<time datetime="2020-08-03T17:37:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-04</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/04/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/">箭头函数</a>
+    <h1 class="article-title" itemprop="name">
+      fetch
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/08/16/fetch/" class="archive-article-date">
+  	<time datetime="2020-08-15T17:00:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Fetch与HttpRequest的对比"><a href="#Fetch与HttpRequest的对比" class="headerlink" title="Fetch与HttpRequest的对比"></a>Fetch与HttpRequest的对比</h3><p><strong>XMLHttpRequest</strong></p>
+<ol>
+<li>所有的功能全部集中在同一个对象上，容易书写出混乱不易维护的代码</li>
+<li>最重要的是无法适配Promise</li>
+</ol>
+<p><strong>Fetch Api 的特点</strong></p>
+<ol>
+<li>并非取代 AJAX，而是对 AJAX 传统 API 的改进</li>
+<li>精细的功能分割：头部信息、请求信息、响应信息等均分布到不同的对象，更利于处理各种复杂的 AJAX 场景</li>
+<li>使用 Promise Api，更利于异步代码的书写</li>
+<li>Fetch Api 并非 ES6 的内容，属于 HTML5 新增的 Web Api</li>
+</ol>
+<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>fetch 函数返回一个 Promise 对象</p>
+<ul>
+<li>当收到服务器的返回结果后，Promise 进入resolved状态，状态数据为 Response 对象</li>
+<li>当网络发生错误（或其他导致无法完成交互的错误）时，Promise 进入 rejected 状态，状态数据为错误信息</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">es6</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络基础</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">箭头函数</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Promise</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://winter1141151662.github.io/2020/08/16/fetch/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/08/16/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">选择排序</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Fetch%E4%B8%8EHttpRequest%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-number">1.</span> <span class="toc-text">Fetch与HttpRequest的对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="toc-number"></span> <span class="toc-text">返回值</span></a>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -232,9 +351,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
