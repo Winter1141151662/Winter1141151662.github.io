@@ -154,6 +154,174 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-手撕map-filter-reduce" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/07/%E6%89%8B%E6%92%95map-filter-reduce/">手撕map,filter,reduce</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/07/%E6%89%8B%E6%92%95map-filter-reduce/" class="archive-article-date">
+  	<time datetime="2020-08-06T17:05:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>开撕！！</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 传入的数组，map回调函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">map</span>(<span class="params">arr, mapCb</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 先做验证</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> mapCb !== <span class="string">&#x27;function&#x27;</span> || arr.length === <span class="number">0</span> || !<span class="built_in">Array</span>.isArray(arr)) &#123;</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 不对原数组进行变动，将得到的值加入到新数组</span></span><br><span class="line">    <span class="keyword">let</span> mapList = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        <span class="comment">// 将回调后得到的值加入数组</span></span><br><span class="line">        mapList.push(mapCb(arr[i], i, arr))</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> mapList</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">filter</span>(<span class="params">arr, filterCb</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 先做判断</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">Array</span>.isArray(arr) || arr.length === <span class="number">0</span> || <span class="keyword">typeof</span> filterCb !== <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 老样子不要改动原来的数组</span></span><br><span class="line">    <span class="keyword">let</span> filterList = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        <span class="comment">// 判断是否是需要的数组</span></span><br><span class="line">        <span class="keyword">if</span> (filterCb(arr[i], i, arr)) &#123;</span><br><span class="line">            filterList.push(arr[i])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> filterList</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// arr数组，reduce回调函数 第二个参数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reduce</span>(<span class="params">arr, reduceCb, initialValue</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 老规矩先做判断</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">Array</span>.isArray(arr) || <span class="keyword">typeof</span> initialValue !== <span class="string">&quot;function&quot;</span> || arr.length === <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 初始化第二个参数，不要对传入的值进行变动</span></span><br><span class="line">    <span class="keyword">let</span> value = initialValue ? initialValue : arr[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = initialValue ? <span class="number">1</span> : <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        <span class="comment">// 循环得到上一次回调后的值</span></span><br><span class="line">        value = reduceCb(value, arr[i], i, arr)</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 返回值</span></span><br><span class="line">    <span class="keyword">return</span> value</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js基础</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">array api手撕</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/07/%E6%89%8B%E6%92%95map-filter-reduce/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-http有哪些常见请求方式？" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/07/http%E6%9C%89%E5%93%AA%E4%BA%9B%E5%B8%B8%E8%A7%81%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%EF%BC%9F/">http有哪些常见请求方式？</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/07/http%E6%9C%89%E5%93%AA%E4%BA%9B%E5%B8%B8%E8%A7%81%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%EF%BC%9F/" class="archive-article-date">
+  	<time datetime="2020-08-06T16:46:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="http有哪些常见请求方式？"><a href="#http有哪些常见请求方式？" class="headerlink" title="http有哪些常见请求方式？"></a>http有哪些常见请求方式？</h3><ol>
+<li><strong>GET</strong>    请求指定的页面信息，并返回实体主体。</li>
+<li><strong>HEAD</strong>    类似于 GET 请求，只不过返回的响应中没有具体的内容，用于获取报头</li>
+<li><strong>POST</strong>    向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST 请求可能会导致新的资源的建立和/或已有资源的修改。</li>
+<li><strong>PUT</strong>    从客户端向服务器传送的数据取代指定的文档的内容。</li>
+<li><strong>DELETE</strong>    请求服务器删除指定的页面。</li>
+<li>**CONNECT    HTTP/1.**1 协议中预留给能够将连接改为管道方式的代理服务器。</li>
+<li><strong>OPTIONS</strong>    允许客户端查看服务器的性能。</li>
+<li><strong>TRACE</strong>    回显服务器收到的请求，主要用于测试或诊断。</li>
+<li><strong>PATCH</strong>    是对 PUT 方法的补充，用来对已知资源进行局部更新 。</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js基础</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/07/http%E6%9C%89%E5%93%AA%E4%BA%9B%E5%B8%B8%E8%A7%81%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%EF%BC%9F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-同源策略" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -829,186 +997,9 @@
 
 
   
-    <article id="post-箭头函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/04/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/">箭头函数</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/04/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/" class="archive-article-date">
-  	<time datetime="2020-08-03T17:37:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><p>回顾：this指向</p>
-<ol>
-<li>通过对象调用函数，this指向对象</li>
-<li>直接调用函数，this指向全局对象</li>
-<li>如果通过new调用函数，this指向新创建的对象</li>
-<li>如果通过apply、call、bind调用函数，this指向指定的数据</li>
-<li>如果是DOM事件函数，this指向事件源</li>
-</ol>
-<h2 id="使用语法"><a href="#使用语法" class="headerlink" title="使用语法"></a>使用语法</h2>
-        
-          <a class="article-more-a" href="/2020/08/04/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">es6</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">箭头函数</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/04/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-apply-call-bind的用法和区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/04/apply-call-bind%E7%9A%84%E7%94%A8%E6%B3%95%E5%92%8C%E5%8C%BA%E5%88%AB/">apply,call,bind的用法和区别</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/04/apply-call-bind%E7%9A%84%E7%94%A8%E6%B3%95%E5%92%8C%E5%8C%BA%E5%88%AB/" class="archive-article-date">
-  	<time datetime="2020-08-03T16:56:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="apply-call-bind的用法和区别"><a href="#apply-call-bind的用法和区别" class="headerlink" title="apply,call,bind的用法和区别"></a>apply,call,bind的用法和区别</h3><p>用途:手动改变this的指向</p>
-<p>区别：1.apply和call会使当前函数<strong>立即执行</strong>，bind会返回一个函数，<strong>后续需要时再调用</strong></p>
-<ol>
-<li><p>call是apply的语法糖，只有传的参数不同，call中要传多个任意参数，apply只可以直接传数组或者类数组</p>
-</li>
-<li><p>bind是为函数绑定一个this上下文</p>
-</li>
-</ol>
-<p>规则: fn.apply(上下文环境，执行所需数组)</p>
-<pre><code> fn.call(上下文环境，执行所需单个参数)
-
- fn.bind(上下文环境)</code></pre>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">this指向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/04/apply-call-bind%E7%9A%84%E7%94%A8%E6%B3%95%E5%92%8C%E5%8C%BA%E5%88%AB/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1119,15 +1110,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">this</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1147,19 +1130,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">event loop</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">闭包</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">arguments</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1171,7 +1150,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">函数默认值</a>
+                <a href="javascript:void(0)" class="js-tag color5">this</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">闭包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">arguments</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1179,7 +1174,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">原型链</a>
+                <a href="javascript:void(0)" class="js-tag color1">函数默认值</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1187,11 +1182,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">array api手撕</a>
+                <a href="javascript:void(0)" class="js-tag color4">原型链</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">迭代器</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">箭头函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">array api手撕</a>
               </li>
             
             <div class="clearfix"></div>
