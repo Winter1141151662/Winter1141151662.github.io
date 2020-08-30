@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="https://winter1141151662.github.io">
   <title>call,apply,bind手写 | emmm cjy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="call手写1234567891011121314151617&#x2F;***手写call，thisArg要指向的对象，...args剩余参数**&#x2F;Function.prototype.myCall &#x3D; function(thisArg, ...args) &amp;#123;    &#x2F;&#x2F; 创建一个独一无二的符号属性    const fn &#x3D; Symbol(&quot;fn&quot;);    &#x2F;&#x2F; 判断传入">
+  <meta name="description" content="call手写1234567891011121314151617181920&#x2F;***手写call，thisArg要指向的对象，...args剩余参数**&#x2F;Function.prototype.myCall &#x3D; function(thisArg, ...args) &amp;#123;    if(tyoeof thisArg !&#x3D;&#x3D;&#x3D; &quot;object)&amp;#123;        Throw new">
 <meta property="og:type" content="article">
 <meta property="og:title" content="call,apply,bind手写">
 <meta property="og:url" content="https://winter1141151662.github.io/2020/08/04/call-apply-bind%E6%89%8B%E5%86%99/index.html">
 <meta property="og:site_name" content="emmm cjy">
-<meta property="og:description" content="call手写1234567891011121314151617&#x2F;***手写call，thisArg要指向的对象，...args剩余参数**&#x2F;Function.prototype.myCall &#x3D; function(thisArg, ...args) &amp;#123;    &#x2F;&#x2F; 创建一个独一无二的符号属性    const fn &#x3D; Symbol(&quot;fn&quot;);    &#x2F;&#x2F; 判断传入">
+<meta property="og:description" content="call手写1234567891011121314151617181920&#x2F;***手写call，thisArg要指向的对象，...args剩余参数**&#x2F;Function.prototype.myCall &#x3D; function(thisArg, ...args) &amp;#123;    if(tyoeof thisArg !&#x3D;&#x3D;&#x3D; &quot;object)&amp;#123;        Throw new">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-08-04T15:49:57.000Z">
-<meta property="article:modified_time" content="2020-08-04T16:26:53.651Z">
+<meta property="article:modified_time" content="2020-08-25T10:44:05.222Z">
 <meta property="article:author" content="cjy">
 <meta property="article:tag" content="js基础">
 <meta property="article:tag" content="this">
@@ -176,12 +176,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="call手写"><a href="#call手写" class="headerlink" title="call手写"></a>call手写</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*手写call，thisArg要指向的对象，...args剩余参数</span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line"><span class="built_in">Function</span>.prototype.myCall = <span class="function"><span class="keyword">function</span>(<span class="params">thisArg, ...args</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 创建一个独一无二的符号属性</span></span><br><span class="line">    <span class="keyword">const</span> fn = <span class="built_in">Symbol</span>(<span class="string">&quot;fn&quot;</span>);</span><br><span class="line">    <span class="comment">// 判断传入this指向的对象是否为Null,null的话指向window</span></span><br><span class="line">    thisArg = thisArg || <span class="built_in">window</span>;</span><br><span class="line">    <span class="comment">// 将方法挂载在指向的对象中</span></span><br><span class="line">    thisArg[fn] = <span class="built_in">this</span>;</span><br><span class="line">    <span class="comment">// 通过thisArg[fn]的方式调用该函数，根据谁调用this指向谁的原理，此时的this指向了thiArg</span></span><br><span class="line">    <span class="keyword">const</span> result = thisArg[fn](...args);</span><br><span class="line">    <span class="comment">// 拍一拍衣袖不留下任何云彩</span></span><br><span class="line">    <span class="keyword">delete</span> thisArg[fn];</span><br><span class="line">    <span class="comment">// 返回结果</span></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        <h3 id="call手写"><a href="#call手写" class="headerlink" title="call手写"></a>call手写</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*手写call，thisArg要指向的对象，...args剩余参数</span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line"><span class="built_in">Function</span>.prototype.myCall = <span class="function"><span class="keyword">function</span>(<span class="params">thisArg, ...args</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(tyoeof thisArg !=== <span class="string">&quot;object)&#123;</span></span><br><span class="line"><span class="string">        Throw new Error(&#x27;&#x27;)</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    // 创建一个独一无二的符号属性</span></span><br><span class="line"><span class="string">    const fn = Symbol(&quot;</span>fn<span class="string">&quot;);</span></span><br><span class="line"><span class="string">    // 判断传入this指向的对象是否为Null,null的话指向window</span></span><br><span class="line"><span class="string">    thisArg = thisArg || window;</span></span><br><span class="line"><span class="string">    // 将方法挂载在指向的对象中</span></span><br><span class="line"><span class="string">    thisArg[fn] = this;</span></span><br><span class="line"><span class="string">    // 通过thisArg[fn]的方式调用该函数，根据谁调用this指向谁的原理，此时的this指向了thiArg</span></span><br><span class="line"><span class="string">    const result = thisArg[fn](...args);</span></span><br><span class="line"><span class="string">    // 拍一拍衣袖不留下任何云彩</span></span><br><span class="line"><span class="string">    delete thisArg[fn];</span></span><br><span class="line"><span class="string">    // 返回结果</span></span><br><span class="line"><span class="string">    return result;</span></span><br><span class="line"><span class="string">&#125;;</span></span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h3 id="apply手写"><a href="#apply手写" class="headerlink" title="apply手写"></a>apply手写</h3><blockquote>
 <p>call手写出来，apply就简单了，只是传参形式不同而已</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.myApply = <span class="function"><span class="keyword">function</span>(<span class="params">thisArg, args</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> fn = <span class="built_in">Symbol</span>(<span class="string">&#x27;fn&#x27;</span>);</span><br><span class="line">    thisArg = thisArg || <span class="built_in">window</span>;</span><br><span class="line">    thisArg[fn] = <span class="built_in">this</span>;</span><br><span class="line">    <span class="comment">//注意里面传入的是数组就可以了</span></span><br><span class="line">    <span class="keyword">const</span> result = thisArg[fn](...args);</span><br><span class="line">    <span class="keyword">delete</span> thisArg[fn];</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.myApply = <span class="function"><span class="keyword">function</span>(<span class="params">thisArg, args</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(tyoeof thisArg !=== <span class="string">&quot;object)&#123;</span></span><br><span class="line"><span class="string">        Throw new Error(&#x27;&#x27;)</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    const fn = Symbol(&#x27;fn&#x27;);</span></span><br><span class="line"><span class="string">    thisArg = thisArg || window;</span></span><br><span class="line"><span class="string">    thisArg[fn] = this;</span></span><br><span class="line"><span class="string">    //注意里面传入的是数组就可以了</span></span><br><span class="line"><span class="string">    const result = thisArg[fn](...args);</span></span><br><span class="line"><span class="string">    delete thisArg[fn];</span></span><br><span class="line"><span class="string">    return result;</span></span><br><span class="line"><span class="string">&#125;;</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="bind手写"><a href="#bind手写" class="headerlink" title="bind手写"></a>bind手写</h3><blockquote>
 <p>注意点</p>
@@ -191,7 +191,7 @@
 <li>保留原函数在原型链上的属性和方法</li>
 </ol>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.myBind = <span class="function"><span class="keyword">function</span>(<span class="params">thisArg,...args</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> self = <span class="built_in">this</span>;</span><br><span class="line">    <span class="keyword">let</span> bond = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        self.apply(<span class="built_in">this</span> <span class="keyword">instanceof</span> self ? <span class="built_in">this</span>:thisArg,args.concat(<span class="built_in">Array</span>.from(<span class="built_in">arguments</span>)));</span><br><span class="line">    &#125;</span><br><span class="line">    bond.prototype = <span class="built_in">Object</span>.create(thisArg.prototype);</span><br><span class="line">    <span class="keyword">return</span> bond</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.myBind = <span class="function"><span class="keyword">function</span>(<span class="params">thisArg</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> thisArg === <span class="string">&quot;object&quot;</span>)&#123;</span><br><span class="line">        Throw <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> self = <span class="built_in">this</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> args = <span class="built_in">arguments</span>;</span><br><span class="line">        <span class="keyword">return</span> self.apply(thisArg,args)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
       
 
       
@@ -436,15 +436,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Promise</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">js基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">this指向</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -452,11 +448,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">class</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">this指向</a>
+                <a href="javascript:void(0)" class="js-tag color3">Promise</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -492,19 +492,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">闭包</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">arguments</a>
+                <a href="javascript:void(0)" class="js-tag color1">函数默认值</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">函数默认值</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -516,15 +512,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">css3</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">css基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">构造函数</a>
+                <a href="javascript:void(0)" class="js-tag color5">css3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">array api手撕</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">arguments</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -536,7 +536,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">array api手撕</a>
+                <a href="javascript:void(0)" class="js-tag color5">构造函数</a>
               </li>
             
             <div class="clearfix"></div>
